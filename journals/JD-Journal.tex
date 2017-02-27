@@ -66,12 +66,12 @@
 \address[mymainaddress]{Hamilton Institute, Maynooth University, Kildare, Ireland}
 
 \begin{abstract}
-As SME's adopt Cloud technologies and rapid delivery models to provide high value customer offerings, there is a clear focus on uptime. Cloud outages represent a challenge to SME's and micro teams to maintain a services platform. If a Cloud platform suffers from downtime this can have a negative effect on business revenue. Additionally outages can divert resources from product development/delivery tasks to reactive remediation. These challenges are more immediate for SME's or micro teams with a small pool of resources at their disposal. Therefore it is valuable to develop a framework that can be used to model the arrival of Cloud outage events. Such a framework can be used by Cloud operations teams to manage their scarce pool of resources to resolve outages, thereby minimising impact to service delivery. This article considers existing modelling techniques such as the M/M/1 queue, and proposes a special case of the G/G/1 queue system. Finally we investigate dependence between overlapping outage events. The results of this study demonstrate that this framework can improve the estimation of Cloud outage events and aid DevOps resource planning.
+As Small Medium Enterprises (SMEs) adopt Cloud technologies and rapid delivery models to provide high value customer offerings, there is a clear focus on uptime. Cloud outages represent a challenge to SMEs and micro teams to maintain a services platform. If a Cloud platform suffers from downtime this can have a negative effect on business revenue. Additionally outages can divert resources from product development/delivery tasks to reactive remediation. These challenges are more immediate for SMEs or micro teams with a small pool of resources at their disposal. In this paper we present a framework that can be used to model the arrival of Cloud outage events. Such a framework can be used by Cloud operations teams to manage their scarce pool of resources to resolve outages, thereby minimising impact to service delivery. We conducted analysis of over three 300 Cloud outage events from an enterprise data set. We modelled the inter arrival and service times of each outage event and found a Pareto and lognormal distribution to be a suitable fit. We used this result to produce a special case of the G/G/1 queue system to predict the busy times of DevOps personel. We also investigated dependence between overlapping outage events. Our busy time predictive queuing model compared favourably with observed data, 72\% precision was achieved using one million simulations. 
 
 \end{abstract}
 
 \begin{keyword}
-Outage simulation \sep Resource allocation model \sep Queuing Theory 
+Outage simulation \sep Resource allocation model \sep Queuing Theory \sep Cloud computing
 \end{keyword}
 
 \end{frontmatter}
@@ -81,9 +81,15 @@ Outage simulation \sep Resource allocation model \sep Queuing Theory
 \section{Introduction}
 Cloud outage prediction and resolution is an important activity in the management of a Cloud service. Recent media reports have documented cases of Cloud outages from high profile Cloud service providers \cite{CRN2016outage}. During 2016 alone the CRN website has documented the ten highest profile Cloud outages to have occurred so far.  Due to the increasing complex nature of the data centre infrastructure, coupled with the rapid continuous delivery of incremental software updates, it seems that Cloud outages are with us for the time being.
 
-For operations teams that maintain a Cloud infrastructure, they rely on state of the art monitoring and alert systems to determine when an outage occurs. Examples of monitoring solutions include: New Relic, IBM Predictive Insights and Ruxit. Once a new outage is observed, depending on the outage type (e.g. Software component, infrastructure, hardware etc), additional relevant experts may be called to remediate the issue. The time taken to resolve the issue may depend on a number of factors: ability to find the relevant expert, swift problem diagnosis and velocity of the pushing a fix to production systems. 
+For operations teams that maintain a Cloud infrastructure, they rely on state of the art monitoring and alert systems to determine when an outage occurs. Examples of monitoring solutions include: New Relic, IBM Predictive Insights and Ruxit. Once a new outage is observed, depending on the outage type (e.g. Software component, infrastructure, hardware etc), additional relevant experts may be called to remediate the issue. The time taken to resolve the issue may depend on a number of factors: ability to find the relevant expert, swift problem diagnosis and velocity of pushing a fix to production systems. 
 
-Both SME's and micro teams within large organisation's face a number of challenges when adopting a Cloud platform and a mechanism to deliver products and services. A number of recent studies have outlined that both frequency and duration of outage events are key challenges. Almost all European SME's (93\%) employ less than ten people \cite{europa2015sme}. Ensuring that adequate skills and resources are available to accommodate incoming outage events is highly desirable.
+Both SME's and micro teams within large organisation's face a number of challenges when adopting a Cloud platform and a mechanism to deliver products and services. A number of recent studies have outlined that both frequency and duration of outage events are key challenges \cite{InfoWorld2015outage}. Almost all European SME's (93\%) employ less than ten people \cite{europa2015sme}. Ensuring that adequate skills and resources are available to accommodate incoming outage events is highly desirable.
+
+In this paper we propose a framework that a micro team or SME's can leverage to best manage their existing resource pool. 
+
+The core idea of this framework is for operations teams to use a special case of the G/G/1 queue to model the inter-arrival and service times of outage events. This article consists of a study of outage event data from a large enterprise dataset. By modelling both inter-arrival and service outage times, a special case of the G/G/1 queue is developed. This G/G/1 queue is then tested against an off the shelf queue model (M/M/1) to compare and contrast queue busy time prediction. Finally our framework also considers dependence between overlapping outage events. 
+
+To help researchers reproduce and extend this study, pseudo-code of the queue modelling framework is provided. By utilising this queue framework, researches will have the ability to test their preferred case of the G/G/1 model against the M/M/1 model.
 
 Downtime is bad for business. Whether a company provides a hosting platform, more commonly known as Platform as a Service (PaaS), or for a company that consumes such a platform to deliver their own services, more commonly known as Software as a Service (SaaS). The end result is the same: Business disruption, lost revenue and recovery/remediation costs. A recent US study  looked at the cost of data centre downtimes and calculated the mean cost to be \$5617 per minute of downtime \cite{DCcost}.
 
@@ -91,29 +97,23 @@ In the current literature a framework to model Cloud outage events is absent. Th
 
 Another consideration is the idea of event dependence. Typical off the shelf single-server queue models such as M/M/1 and G/G/1 assume that the inter-arrival and service times between events are independent \cite{MM1}. However if some form of dependence is found between events how useful would a queuing model which assumes independence compare against that of a queuing model with dependence properties.
 
-Further motivation is driven by recent reports and studies into the adoption of Cloud computing.  Carcary et al. \cite{carcary2014adoption} conducted a study into Cloud computing adoption by Irish SMEs. The key findings of the study were as follows: Almost half the 95 SMEs surveyed had not migrated their services to the Cloud. Of those SMEs that had migrated they had not assessed their readiness to adopt Cloud computing. Finally the study noted that the main constraints for SMEs adoption of Cloud computing were: Security/compliance concerns, lack of IT skills and data protection concerns. Gholami et al. \cite{gholami2016Cloud} provided a detailed review of current Cloud migration processes. One of the main migration concerns mentioned was the unpredictability of a Cloud environment. Factors that led to this unpredictability included: Network outages and middleware failures. The study concluded that a fixed migration approach is not possible to cover all migration scenarios due to architecture heterogeneity.
+Further motivation is driven by recent reports and studies into the adoption of Cloud computing.  Carcary et al. \cite{carcary2014adoption} conducted a study into Cloud computing adoption by Irish SME's. The key findings of the study were as follows: Almost half the 95 SME's surveyed had not migrated their services to the Cloud. Of those SME's that had migrated they had not assessed their readiness to adopt Cloud computing. Finally the study noted that the main constraints for SME's adoption of Cloud computing were: Security/compliance concerns, lack of IT skills and data protection concerns. Gholami et al. \cite{gholami2016Cloud} provided a detailed review of current Cloud migration processes. One of the main migration concerns mentioned was the unpredictability of a Cloud environment. Factors that led to this unpredictability included: Network outages and middleware failures. The study concluded that a fixed migration approach is not possible to cover all migration scenarios due to architecture heterogeneity.
 
-In this paper we propose a framework that a micro team or SMEs can leverage to best manage their existing resource pool. 
-
-The core idea of this framework is for operations teams to use a special case of the G/G/1 queue to model the inter-arrival and service times of outage events. This article consists of a study of outage event data from a large enterprise dataset. By modelling both inter-arrival and service outage times, a special case of the G/G/1 queue is developed. This G/G/1 queue is then tested against an off the shelf queue model (M/M/1) to compare and contrast queue busy time prediction. Finally our framework also considers dependence between overlapping outage events. This framework aims to plug a gap in the current literature mentioned above.
-
-To help researchers reproduce and extend this study, pseudo-code of the queue modelling framework is provided. By utilising this queue framework, researches will have the ability to test their preferred case of the G/G/1 model against the M/M/1 model.
-
-The rest of this article is divided up into the following sections: Section 2 introduces background and related work. Section 3 discusses the data set collected (and associated study terminology), outlines the research questions that are answered by this study and the limitations of the dataset. Section 4 outlines the experimental approach and associated results. Section 5 discusses the results of our experiments. Finally in Section 6, we conclude this paper and discuss future work.
+The rest of this article is divided up into the following sections: Section 2 introduces background and related work. Section 3 discusses the data set collected (and associated study terminology), outlines the questions that are answered by this study and the limitations of the dataset. Section 4 outlines the experimental approach and associated results. Section 5 discusses the results of our experiments. Finally in Section 6, we conclude this paper and discuss future work.
 
 \section{Background and related work}
 
-The following section provides some background information on two common Cloud services: SaaS and PaaS. Then we review high profile Cloud outages that have made the media headlines. Finally this section concludes with a in-depth look at relevant studies in the field of repairable systems modelling, queuing theory and Cloud outage studies.
+The following section provides some background information on two common Cloud services: SaaS and PaaS. We then review high profile Cloud outages that have made the media headlines. Finally this section concludes with a in-depth look at relevant studies in the field of repairable systems modelling, queuing theory and Cloud outage studies.
 
 \subsection{Software as a Service}
 SaaS is defined as a delivery and licensing model in which software is used on a subscription basis (e.g. monthly, quarterly or yearly) and where applications or services are hosted centrally \cite{Cloudbook2015}. The key benefits for software vendors are the ability for software to be available on a continuous basis (on-demand) and for a single deployment pattern to be used. It is this single deployment pattern that can greatly reduce code validation times in pre-release testing, due to the homogeneous architecture. Central hosting also allows for rapid release of new features and updates through automated delivery processes \cite{datacentre2015}. 
 
-SaaS is now ubiquitous, while initially adopted by large software vendors (e.g. Amazon, Microsoft, IBM, Google and Salesforce) many SMEs are now using the Cloud as their delivery platform and licensing model of choice \cite{CRN2015providers}. 
+SaaS is now ubiquitous, while initially adopted by large software vendors (e.g. Amazon, Microsoft, IBM, Google and Salesforce) many SME's are now using the Cloud as their delivery platform and licensing model of choice \cite{CRN2015providers}. 
 
 \subsection{Platform as a Service}
 PaaS is defined as a delivery and platform management model. This model allows customers to develop and maintain Cloud based software and services without the need for building and managing a complex Cloud based infrastructure.
 
-The main attraction of PaaS is that it allows SME's to rapidly develop and deliver Cloud based software and services. While focusing on their core products and services SMEs are less distracted by having to design, build and service a large complex Cloud based infrastructure. 
+The main attraction of PaaS is that it allows SME's to rapidly develop and deliver Cloud based software and services. While focusing on their core products and services SME's are less distracted by having to design, build and service a large complex Cloud based infrastructure. 
 
 However one drawback of PaaS is that an SME may not have a full view of the wider infrastructure. Therefore if an outage event occurs at an infrastructure level (e.g. Network, Loadbalancer) an SME may be unaware of the problem until the problem is reported by a customer.
 
@@ -162,7 +162,7 @@ Bodik et al \cite{bodik2012surviving} analysed the network communication of a la
 
 Synder et al \cite{snyder2015evaluation} conducted a study on the reliability of Cloud based systems.The authors developed an algorithm based on a non-sequential Monte Carlo Simulation to evaluate the reliability of large scale Cloud systems. The authors found that by intelligently allocating the correct types of virtual machine instances, overall Cloud reliability can be maintained with a high degree of precision. \par
 
-Kenney \cite{kenny1993estimating} proposes a model to estimate the arrival of field defects based on the number of software defects found during in-house testing. The model is based on the Weibull distribution which arises from the assumption that field usage of commercial software increases as a power function of time. If we think of Cloud outages as a form of field defect, there is much to consider in this model. \par 
+Kenney \cite{kenny1993estimating} proposes a model to estimate the arrival of field defects based on the number of software defects found during in-house testing. The model is based on the Weibull distribution which arises from the assumption that field usage of commercial software increases as a power function of time. If we think of Cloud outages as a form of field defect, there is much to consider in this model. For example, the arrival of Cloud outages in the the field could be modelled with a power law distribution (e.g. Pareto distribution) as a starting point. \par 
 
 Kleyner and O'Connor \cite{o2011practical} propose an important thesis regarding reliability engineering. While emphasis is placed on measuring reliability for both mechanical and electrical/electronic systems, the authors do broaden their scope to discuss reliability of computer software. One aspect of interest is their discussion of the lognormal distribution and its application in modelling for system reliability with wear out characteristics and for modelling the repair times of maintained systems. \par
 
@@ -170,13 +170,13 @@ Almog \cite{almog1979study} analysed repair data from twenty maintainable electr
 
 Adedigba \cite{adedigba2005statistical} analysed the service times from a help desk call centre. Her study showed that the exponential distribution did not provide a reasonable fit for call centre service times. However a log-normal distribution was a reasonable fit for overall service times. Her study also showed that a phase-type distribution with three phases provided a reasonable fit for service times for specific jobs within the call centre job queue. \par
 
-As can be seen from the literature review a number of studies have been conducted into Cloud outage failures and the inter-arrival / repair times of computer systems. However there are no studies that conduct end to end research of outage events to build a framework to predict the likely busy time and resource management of DevOps teams.  
+As can be seen from the literature review a number of studies have been conducted into Cloud outage failures and the inter-arrival / repair times of computer systems. However there are no studies that conduct end to end research of outage events to build a framework to predict the likely busy time and resource management of DevOps teams. This framework aims to plug a gap in the current literature mentioned above.
 
 \section{Data set and research methodology}
 
 Cloud outage studies have been shown to provide an effective way to highlight common failure patterns \cite{InfoWorld2015outage}. In this and subsequent sections our study will present a data set and queuing model. The aim of which is to illustrate its efficacy in modelling Cloud outage events. 
 
-A number of points related to the dataset have summarised in Table 2 below. 
+Our dataset is taken from an enterprise cloud system which details all outage events over an eighteen month period. In each case we had access to the full outage report log. A number of points related to the dataset are summarised in Table 2. 
 
 \begin {table*}[]
 \caption {Summary of dataset metrics} 
@@ -188,28 +188,32 @@ A number of points related to the dataset have summarised in Table 2 below.
 \\ Number of Data Centres & 3 
 \\ Programming Language & Java 
 \\ Operating System & Linux 
+\\ Hardware & Intel based. (Mixture of physical and virtual systems)
+\\ Load Balancing & F5
 \\ \hline
 \end{tabular}
 \end{center}
 \end{table*}
 
-Product development follows a Continuous delivery (CD) model whereby small amounts of functionality are released to the public on a monthly basis. For each outage event we have access to the full outage report. This study focuses on the following aspects of the outage event data: The inter-arrival time between each outage, the time to service each outage event and whether or not overlapping outage events are related.
+Product development follows a Continuous delivery (CD) model whereby small amounts of functionality are released to the public on a monthly basis. This study focuses on the following aspects of the outage event data: The inter-arrival time between each outage, the time to service each outage event and whether or not overlapping outage events are related.
 
 The following terminology will now be defined to provide clear context. These definitions are referenced from wikipedia as no formal standarised definitions could be obtained \cite{wikidef}.
 
 \begin{description}
  \item [Downtime (Outage)] The term downtime is used to refer to periods when a system is unavailable. Downtime or outage duration refers to a period of time that a system fails to provide or perform its primary function. 
- \item  [Maintenance window] In information technology and systems management, a maintenance window is a period of time designated in advance by the technical staff, during which preventive maintenance that could cause disruption of service may be performed.
- \item [Tiger Team] A tiger team is a group of experts assigned to investigate and/or solve technical or systemic problems. 
+ \item  [Micro Team] In information technology a micro team is typically staffed by three to five persons. Each person within the group has a specific role; Developer, Test Engineer, Automation specialist and a people manager. With each skill set clearly defined there is little to no overlap in terms of role definition. Each role within the team can be considered a single point of failure.
+  \item [Tiger Team] A tiger team is a group of experts assigned to investigate and/or solve technical or systemic problems. 
  \item [DevOps] Is a practice that highlights the collaboration between software development and infrastructure personnel. DevOps may also refer to a team whos core function is to build, deploy and maintain a Cloud infrastructure. 
  \item [Queuing theory] Is the study of events that form waiting lines or queues. In queuing theory, a model is constructed so that queue lengths, inter-arrival and service times can be predicted \cite{sundarapandian2009probability}.
 \end{description}
 
 Prior to outlining our research questions, it is useful to understand why queuing theory could be used to model Cloud outages events. Outages begin at a specific point in time. The problem is then diagnosed and serviced by tiger and DevOps teams. These characteristics are very similar to the properties of a queue system (i.e. inter-arrival times, service times and queue length). 
 
-Both micro teams and SMEs have less than ten employees \cite{eusmereport2015}, yet are adopting the Cloud as a method to deliver software and services. Given the unpredictability of Cloud infrastructure architecture, this study is required to understand whether a micro team / SME has adequate resources to manage future Cloud outage events. 
+Both micro teams and SME's have less than ten employees \cite{eusmereport2015}, yet are adopting the Cloud as a method to deliver software and services. Given the unpredictability of Cloud infrastructure architecture, this study is required to understand whether a micro team / SME has adequate resources to manage future Cloud outage events. 
 
-This study aims to answer a number of research questions. First, how are the inter-arrival times of Cloud outage events distributed? Second, How are the service times of Cloud outage events distributed?  Third, can an effective queuing model be built to simulate outage event traffic? Fourth, are inter-arrival and service times correlated? Fifth, are overlapping outage events related or can we treat each event as independent? 
+This study aims to answer a number of questions. First, how are the inter-arrival times of Cloud outage events distributed? Second, How are the service times of Cloud outage events distributed?  Third, can an effective queuing model be built to simulate outage event traffic? Fourth, are inter-arrival and service times correlated? Fifth, are overlapping outage events related or can we treat each event as independent? 
+
+It should be noted that the area of Renewal Reward Process \cite{blackwell1948renewal}\cite{jewell1967simple} was also considered as part of this study. In fact on closer inspection the processes are quite similar.  For example the time between successive outages on a Cloud system could be assigned as the holding times, the rewards may be seen as the repair costs (service times) for each outage event. However a key application of this study is to understand whether a queue model could be used to simulate outage arrivals. If an effective simulation model can be found, can we use this model to aid resource planning of personnel within a micro team? By looking at the traffic intensity and the queue length we can determine how resources need to be deployed with a micro team or SME. The applications of a Renewal Reward process relate more to understanding of: the age of a software component, the remaining lifetime of a software component, and the replacement reward/penalty of a software component. These questions are all valid, we discuss these applications briefly in our conclusion.
 
 \subsection{Inter-arrival time distribution}
 
@@ -219,33 +223,33 @@ Probability distributions are used in statistics to infer how likely it is for a
 
 This study has similar motivations for Cloud outage service times. Being able to determine a probability distribution that best fits this outage event dataset is a useful exercise. By combining both inter-arrival and service time distributions a queue system can then be built. This queue system can be used to model the arrival and service times of Cloud outage events. The approach to distribution fitting and validation, is the same as described in the previous sub-section. 
 
-\subsection{Outage event modelling framework}
-
-Queuing models have been used previously across many sciences to simulate the arrival and service times for a collection of events. Typically observed inter-arrival and service times data is used to derive a suitable fitting distribution. Thereafter the distribution parameters (i.e. mean, rate, shape, scale etc) are used to simulate queue traffic. Simulation experiments can be much larger than the number of observations. The reason for this is to compare whether the results of simulated data compares favourably or not to an observed sample data set and to predict future behaviour.
-
-For this study we look at how a queuing system can be used to model Cloud outage events. Our queue system was developed using the C programming language. Our study conducted a 1M of simulations against a G/G/1 system based on fitted sample distributions. Furthermore our study also conducted the same number of simulations against an M/M/1 queue. For the mean inter-arrival and service times we used the computed means from our Pareto and lognormal distributions.
-
-An assessment of the usefulness of such simulations is given within the context of resource management within a micro team or SME. Can such simulations provide a reasonable degree of precision to aid resource planning of DevOps / Tiger teams with constrained levels of staffing.
-
 \subsection{Correlation between inter-arrival and service times}
 
 Statistical correlation is used to measure how two variables are related. For this study we want to check if there is a relationship between the duration of inter-arrival and service times and if so what is the level of this relationship. 
 
 There are a number of tests that can be conducted to determine correlation. We shall discuss these briefly.
 
-Pearson \cite{fisher1915frequency} and Spearman's \cite{spearman1904proof} ranked coefficient use s single measure to determine the relationship between two variables. The strength of the relationship is measured between 0 (no correlation) to 1 (high correlation). Additionally the coefficient can be positive or negative indicating the type of relationship. Pearson's test is typically used when dealing with a variables with a linear relationship while Spearman's test can be used where a relationship is monotonic (whether linear or not). 
+Pearson \cite{fisher1915frequency} and Spearman's \cite{spearman1904proof} ranked coefficient use a single measure to determine the relationship between two variables. The strength of the relationship is measured between 0 (no correlation) to 1 (high correlation). Additionally the coefficient can be positive or negative indicating the type of relationship. Pearson's test is typically used when dealing with a variables with a linear relationship while Spearman's test can be used where a relationship is monotonic (whether linear or not). 
 
 Linear regression \cite{galton1890kinship} is a method to model the relationship between two variables where one variable is dependent and the other is an  independent variable. A hypothesis test is conducted and a p-value is computed. Dependent on the size of the p-value the hypothesis of a relationship / no relationship can be accepted or rejected.
 
-Finally autocorrelation \cite{box1970distribution} is a the correlation of a variable with itself (and potentially other variables) at different points over a given time period. The test looks at the time lag between events to infer if a repeating pattern (seasonality) exists. Examining the lags of variables can be useful to determine if there are distinct cyclical patterns between variables or if these patterns are simply white noise.
+Finally autocorrelation \cite{box1970distribution} is the correlation of a variable with itself (and potentially other variables) at different points over a given time period. The test looks at the time lag between events to infer if a repeating pattern (seasonality) exists. Examining the lags of variables can be useful to determine if there are distinct cyclical patterns between variables or if these patterns are simply white noise.
 
 For our correlation assessment we used the following functions found in the base R package: cor.test \cite{PearSpearR}, lm \cite{lmR} acf \cite{acfR} to test the relationship between inter-arrival and service times.
 
-Correlation tests can also be used to determine dependence between variables, however we shall discuss a specific aspect of dependence in the next section. 
+Correlation tests can also be used to determine dependence between variables, however we shall discuss a specific aspect of dependence in section 3.5. 
+
+\subsection{Outage event modelling framework}
+
+Queuing models have been used previously across many sciences to simulate the arrival and service times for a collection of events. Typically observed inter-arrival and service times data is used to derive a suitable fitting distribution. Thereafter the distribution parameters (i.e. mean, rate, shape, scale etc) are used to simulate queue traffic. Simulations allow large experiments to be undertaken which could not be conducted with the real system, and to make predictions of future behaviour.
+
+For this study we look at how a queuing system can be used to model Cloud outage events. Our queue system was developed using the C programming language. Our study conducted 1M simulations against a G/G/1 system based on fitted sample distributions. Furthermore our study also conducted the same number of simulations against an M/M/1 queue. For the mean inter-arrival and service times we used the computed means from our Pareto and lognormal distributions.
+
+An assessment of the usefulness of such simulations is given within the context of resource management within a micro team or SME. Can such simulations provide a reasonable degree of precision to aid resource planning of DevOps / Tiger teams with constrained levels of staffing?
 
 \subsection{Assessment for no association and linkage between overlapping outage events}
 
-As discussed earlier, the M/M/1 queuing system assumes that arrivals are independent. This is due to the understanding that both arrival and service times are governed by a Poisson process. For G/G/1 (i.e. non-Poisson distribution) queues, there is no such assumption of independence. However, the occurrence of cascading (i.e. dependent) outages events can play a role in the shape of both inter-arrival and service distributions. Therefore for the final part of our statistical analysis, this study formally tests whether the arrival times of overlapping outage events are independent or not. 
+As discussed earlier, the M/M/1 queuing system assumes that arrivals are independent. This is due to the understanding that both arrival and service times are governed by a Poisson process. For G/G/1 (i.e.general distribution) queues, we still have the same assumption of independence. However, the occurrence of cascading (i.e. dependent) outages events can play a role in the shape of both inter-arrival and service distributions. Therefore for the final part of our statistical analysis, this study formally tests whether the arrival times of overlapping outage events are independent or not. 
 
 The following method will be used: Defect outage reports will be analysed to determine if an arrival overlaps with the service time of a prior outage event. Next the outage reports will be examined to determine if the two overlapping outages are related by component area and root cause. The outage counts will then be arranged in a 2 by 2 contingency table format. Fishers exact test for independence\cite{fisher1922interpretation}\cite{fisher1925statistical} is then conducted. For the actual test the authors used the R library fisher.test \cite{FisherExact}. 
 
@@ -255,7 +259,11 @@ The dataset has a number of practical limitations, which are now discussed. The 
 
 For the M/M/1 simulation, in the absence of a suitably good fitting mean parameter we used the means from our inter-arrival and service time distributions.
 
-Finally the outage events that form part of this study are from an enterprise Cloud system. The outage events are applicable to the software domain of BSS, Collaboration, Email and social applications. As a consequence the analysis may not be relevant outside of these fields.
+The outage events that form part of this study are from an enterprise Cloud system. We recognise that the outage events observed, can have a variety of root causes (i.e. Configuration-Manual, Concurrency-Contention, Hardware, High availability and Network). A number of Concurrency-Contention outage events may be tied to the code base which is specific to this Cloud system. However concurrency and contention issues can occur in distributed computing systems irrespective of the underlying software code.
+
+The hardware used in the Cloud environment is Intel based (i.e. x86\_64), therefore any hardware failures will be applicable to this hardware form factor, that said this a common hardware type.
+
+The outage events are applicable to the software domain of BSS, Collaboration, Email and social applications. As a consequence the analysis may not be relevant outside of this realm.
 
 \section{Results}
 The results of the study are now discussed. This section shall follow the same format as the methodology section.
@@ -319,11 +327,27 @@ Fig 1 graphically illustrates the how well the Pareto distribution fits our data
 \end{figure*}
 
 
-Table 4 shows a summary of the seven distributions fitted against the observed service time data. Each distribution is listed along with it's corresponding Anderson Darling test statistic and p-value. Fig 2 shows four Goodness-of-fit plots for a fitted lognormal distribution: Density, (CDF), (P-P)  and (Q-Q).  
+Table 4 shows a summary of the seven distributions fitted against the observed service time data. Each distribution is listed along with its corresponding Anderson Darling test statistic and p-value. Fig 2 shows four Goodness-of-fit plots for a fitted lognormal distribution: Density, (CDF), (P-P)  and (Q-Q).  
 
 For the second research question: What probability distribution is an appropriate fit for the observed service times of Cloud outage events, again seven continuous distributions were fitted against the data set. Using the same method for inter-arrival times, an AD Goodness of fit test statistic and p value was computed for each distribution. Both loglogistic and Pareto scored well, however lognormal was found to be the best fitting with an AD test statistic of 0.34 and a p-value of 0.90. All other distributions had a p-value of \textless 0.05. Once again we can see that as the AD test statistic becomes large the corresponding p-values become fixed around a value of 1.83e-06.
 
 The plots contained in Fig 2 show how the lognormal distribution is a good fit to our dataset. For the Q-Q plot the majority of values fit the distribution line. That said there are a very small number of values with stray from the line, with one obvious extreme value. By and large the fit is very good. Additionally for the P-P plot the values from our dataset either reside on or very close to the line which illustrates the quality of fit.
+
+\subsection{Correlation between inter-arrival and service times}
+
+\begin{figure*}[]
+\begin{center}
+\includegraphics[width=18cm, height=10.5cm]{acf_graph.pdf} 
+\caption{Autocorrelation plots for inter-Arrival and service times}
+\end{center}
+\label{fig:acfgraphs}
+\end{figure*}
+
+Figure 3 shows the results of the autocorrelation test between the sequences of inter-arrival and service times. Starting with the inter-arrival times we can see that the lags at positions 0, 25 and 240 respectively cross the confidence interval. With only three values passing the confidence line (and the lag at position 0 being expected), clearly there is little evidence of a seasonality in the values of inter-arrival times. For service times we observed a number of lags outside the confidence interval at positions 0 --10, 100 --120 and 160. While the correlation at lag 0 is expected, there is weak evidence of seasonality for lower and middle values of service times. Finally looking at the graphs of both inter-arrival and service times, we can see two lags at approximately positions 53 and 140 passing the confidence line. This suggests there is weak evidence of association between the two variables.
+
+In addition to looking at the autocorrelation plots, we also performed tests on corresponding pairs of inter-arrival times and services times to determine their relationship. Both Pearson and Spearman tests of correlation were executed. R\textsuperscript{2} values were computed as 0.06 (Pearson) and 0.06 (Spearman). These results indicate there is a minute positive correlation between inter-arrival and service times.
+
+Finally a we ran a linear regression test using inter-arrival times as the dependent variable and service times as the independent variable. Our hypothesis states: There is no association between inter-arrival and service times. A p-value of 0.297 was computed. We can conclude there is weak evidence against our hypothesis. In other words there is little evidence to suggest that inter-arrival and service times are correlated. 
 
 \subsection{Outage event modelling framework}
 
@@ -342,25 +366,9 @@ The plots contained in Fig 2 show how the lognormal distribution is a good fit t
 Now that we have shown the results of distribution fitting, we shall now use these distributions to test our special case of our G/G/1 queue model. For the Pareto distribution our rate and shape parameters were computed to be 4.94 and 9404.06 respectively. Our 
 lognormal service distribution had a computed location and scale parameter of 4.58 and 1.30 respectively.
 
-Table 5 shows a summary of the queue model experiments conducted as well as details of the observed outage data over an eighteen month period. The model type defines whether observed data or a simulation was conducted. The type of simulation is also included. The \% Busy and \% Free columns relate to the number of overlapping events in the queue. For example we counted the number of times an outage event (either observed or simulated) entered the queue system while an existing outage was currently being serviced. This value is presented as an overall percentage. 
+Table 5 shows a summary of the queue model experiments conducted as well as details of the observed outage data over an eighteen month period. The model type defines whether observed data or a simulation was conducted. The type of simulation is also included. The \% Busy and \% Free columns relate to the number of overlapping events in the queue. Specifically, we counted the number of times an outage event (either observed or simulated) entered the queue system while an existing outage was currently being serviced. This value is presented as an overall percentage. 
 
-As we can see from Table 5, for the observed data the queue was free approximately 92\% (i.e. either 0 or 1 outage was being served) and approximately 8\% of the time the queue was busy (i.e. while an outage was being served another outage event arrived). Comparing the results of both simulations: the G/G/1 simulation compared favourability with the observed results with approximately 94\% and 6\% free and busy time. However the M/M/1 simulation compared less well with 97\% and 3\% free and busy time. Clearly the G/G/1 model gives a better prediction then the M/M/1 model. However the model is still a little optimistic in terms of it's forecasting of busy and free times.
-
-\subsection{Correlation between inter-arrival and service times}
-
-\begin{figure*}[]
-\begin{center}
-\includegraphics[width=18cm, height=10.5cm]{acf_graph.pdf} 
-\caption{Autocorrelation plots for inter-Arrival and service times}
-\end{center}
-\label{fig:acfgraphs}
-\end{figure*}
-
-Figure 3 shows the results of the autocorrelation test between inter-arrival and service times. Starting with the inter-arrival times we can see that the lags at positions 0, 25 and 240 respectively cross the confidence interval. With only three values passing the confidence line (and the lag at position 0 being expected), clearly there is little evidence of a seasonality in the values of inter-arrival times. For service times we observed a number of lags outside the confidence interval at positions 0 --10, 100 --120 and 160. While the correlation at lag 0 is expected, there may weak evidence of seasonality for lower and middle values of service times. Finally looking at the graphs of both inter-arrival and service times, we can see two lags at approximately positions 53 and 140 passing the confidence line. This suggests there is weak evidence of association between the two variables.
-
-Both Pearson and Spearman tests of correlation were executed. R\textsuperscript{2} values were computed as 0.06 (Pearson) and 0.06 (Spearman). These results indicate there is a minute positive correlation between inter-arrival and service times.
-
-Finally a we ran a linear regression test using inter-arrival times as the dependent variable and service times as the independent variable. Our hypothesis states: There is no association between inter-arrival and service times. A p-value of 0.297 was computed. We can conclude there is weak evidence against our hypothesis. In other words there is little evidence to suggest that inter-arrival and service times are correlated. 
+As we can see from Table 5, for the observed data the queue was free approximately 92\% (i.e. either 0 or 1 outage was being served) and approximately 8\% of the time the queue was busy (i.e. while an outage was being served another outage event arrived). Comparing the results of both simulations: the G/G/1 simulation compared favourability with the observed results with approximately 94\% and 6\% free and busy time. However the M/M/1 simulation compared less well with 97\% and 3\% free and busy time. Clearly the G/G/1 model gives a better prediction then the M/M/1 model. However the model is still a little optimistic in terms of its forecasting of busy and free times.
 
 \subsection{Assessment for no association and linkage between overlapping outage events}
 
@@ -408,7 +416,7 @@ The results section has shown that the Pareto distribution is a good fit to mode
 
 The decision to use Pareto as an inter-arrival time distribution is an interesting choice. The Pareto distribution is a power law distribution and has applications in many fields of science. However the field where a Pareto distribution is typically used is in the area of finance. Specifically for modelling income and wealth \cite{arnold2015pareto}. 
 
-The characteristics of our data that make Pareto so attractive is the number of values within a specific range. Inter-arrivals times range from 3 to 1057122 minutes. Using 2500 minutes as an arbitrary point of delineation, 71\% of inter-arrival times were below 2500 minutes, while 29\% were above 2500 minutes. While this split does not conform to the textbook "80-20 rule" \cite{chen1993theoretical}, it does illustrate that our data set contains a significantly higher proportion of shorter inter-arrival times than longer ones. Given this specific trait, it is not unsurprising that the Pareto distribution is such a good fit. 
+The characteristics of our data that make Pareto so attractive is the number of values within a specific range. Inter-arrivals times range from 3 to 1057122 minutes. Using 2500 minutes as an arbitrary point of delineation, 71\% of inter-arrival times were below 2500 minutes, while 29\% were above 2500 minutes. While this split does not conform to the textbook "80-20" rule \cite{chen1993theoretical}, it does illustrate that our data set contains a significantly higher proportion of shorter inter-arrival times than longer ones. Given this specific trait, it is not unsurprising that the Pareto distribution is such a good fit. 
 
 This study has answered our first research question: What distribution can be used to model inter-arrival times of Cloud outage events. DevOps teams can use the shape and scale parameters of their inter-arrival distribution to compute a mean and standard deviation, which can provide an expected time between outage events. Additionally this result can be used to compute the proportion of inter-arrival times above or below a specific duration. These results can be used to aid resource planning. For example, if the expected inter-arrival time is known or if a high proportion of outages is known to occur within a specific duration, duty rosters can be generated to ensure adequate staffing is available when an outage occurs. Finally this results can be used as a component in a wider queue model framework to infer team busy time.
 
@@ -420,22 +428,32 @@ The log-normal distribution is important in the description of natural events. M
 
 This result adds to the wealth of existing studies which support the notion that service times for repairable systems can be modelled using a lognormal distribution. We noted previously the work done by Kleyner and O'Connor \cite{o2011practical}. However a number of additional recent studies have observed similar results in their studies of repairable systems such as Apostolakis et al  \cite{apostolakis1980synthesis}, Ananda and Malwane \cite{ananda2003confidence} and Ananda et al \cite{ananda2004steady}. 
 
-This study has answered our second research question: What distribution can be used to model service times of Cloud outage events. DevOps teams can employ the location an scale parameters of their service distribution to compute a mean and standard deviation, which can provide an expected duration service time. With the service times known teams can create schedule plans to determine expected engagement times. Finally this result can be used in conjunction with the result from the previous section to model the idle and busy times of a team as part of a queue modelling exercise.
+This study has answered our second research question: What distribution can be used to model service times of Cloud outage events. DevOps teams can employ the location and scale parameters of their service distribution to compute a mean and standard deviation, which can provide an expected duration service time. With the service times known teams can create schedule plans to determine expected engagement times. Finally this result can be used in conjunction with the result from the previous section to model the idle and busy times of a team as part of a queue modelling exercise.
+
+\subsection{Correlation between inter-arrival and service times}
+
+Using a myriad of tests we have answered our fourth research question: Are inter-arrival and service times correlated? Our results show that there is little evidence to suggest a correlation between inter-arrival and service times.
+
+Figure 3 showed graphically how both variables were correlated not only with themselves but each other. Given the low number of lags crossing the confidence interval coupled with the sparse positioning of these lags, there is little evidence to suggest any meaningful correlation. Likewise we saw similar results from both the Pearson, Spearman, and linear regression tests. 
+
+DevOps team can use this result in a number of ways. An ideal goal for a cloud based business is to have as near to 100\% uptime as possible, while ensuring that when an outage does occur, that the time to service such an outage is as short as possible. In other words having very long inter-arrival times between outage events and very short service times is highly desirable. The goal for each requires a separate solution, in the case of long inter-arrival times ensuring that when a system does fail, it fails gracefully without any loss of service. In the case of service times, having an advanced suite of system monitoring solutions coupled with a simple system of rollback to prior code versions and/or configuration changes is key. 
+
+Given the lack of correlation between inter-arrival and service times, DevOps teams can be confident that process changes to reduce service times will not lead to a reduction in inter-arrival times. Moreover with increased reliability brings longer inter-arrival times, this in essence will not lead to longer service times.
 
 \subsection{Outage event modelling framework}
 
 We asked the question can an effective queuing model be built to simulate outage event traffic? The result from our experiment model shows that a model can be built which is provides a good level of precision compared to observed data.
 
-Table 5 provides a summary of the \% busy and free time for observed data and for two sets of simulations: G/G/1 and M/M/1 queues. It is unsurprising that M/M/1 lacks precision. There are two factors to consider here. First that neither the inter-arrival nor service distributions could be adequately modelled using an exponential distribution. We recall from Tables 2 and 3 the AD test statistic for the exponential distribution was infinite. For the purposes of the simulation we used the computed means from the Pareto and lognormal distributions. Second the M/M/1 assumes that all events are independent. We have shown that not all outages are independent. Overall a small proportion of outages (2\%) are linked. These two factors make the M/M/1 queue unsuitable for queue simulation based on the observed data.
+Table 5 provides a summary of the \% busy and free time for our observed data and for two sets of simulations: G/G/1 and M/M/1 queues. It is unsurprising that M/M/1 lacks precision. There are two factors to consider here. First that neither the inter-arrival nor service distributions could be adequately modelled using an exponential distribution. We recall from Tables 2 and 3 the AD test statistic for the exponential distribution was infinite. For the purposes of the simulation we used the computed means from the Pareto and lognormal distributions. Second the M/M/1 queue assumes that the arrival times between events are independent. We have shown that a small proportion (2\%) of overlapping outage events are linked. These two factors make the M/M/1 queue unsuitable for queue simulation based on the observed data.
 
 Conversely the G/G/1 provided a greater degree of precision than the M/M/1 queue. This is due to the fact that the two distributions selected were a good fit against the observed data compared to the exponential distribution. There is still a minor lack of fidelity between our G/G/1 simulation and our observed data. We can surmise that while the goodness-of-fit for the service time distribution 
 was excellent (p-value = 0.90), the goodness-of-fit for the inter-arrival time distribution was very good (p-value = 0.72). Moreover there is the question of independence between arrivals. We must conclude that with a small number of dependent outages coupled with the less than exact fit of the inter-arrival distribution may skew the precision of our simulation. We discuss improvements to this model in future work.
 
-Now let us look at the practical application of such a simulation model. The core of idea of this paper is to produce a model which is effective in simulating the arrival of Cloud events. We have previously mentioned the challenges that both micros teams and SME's have when working in the area of Cloud computing. One of the key challenges is the deployment of resources, and how one can position these resources where they are most needed. Lets consider the following scenario as an example of our simulation framework. 
+Now let us look at the practical application of such a simulation model. The core of idea of this paper is to produce a model which is effective in simulating the arrival of Cloud events. We have previously mentioned the challenges that both micros teams and SME's have when working in the area of Cloud computing. One of the key challenges is the deployment of resources, and how one can position these resources where they are most needed. Let us consider the following scenario as an example of our simulation framework. 
 
-Table 8 shows the output from a G/G/1 simulation. There are two columns: Time (Measured in minutes) and Queue length. Let assume that  we have uptime from 12:00 1st of January. Looking at the output below we can see that we will need one resource to service the first  thirteen outage events. These thirteen outages will arrive and be serviced in sixteen days. Looking at the fourteenth outage event we can see this event will arrive at approximately 11:18 on the 16th of January. DevOps Management have a good indication that two DevOps resources will be required at this time.  One to service the thirteenth outage and a second resource to service the overlapping fourteenth outage. DevOps management can also infer that both resources will be required for only for a short duration. In this case eight minutes approximately. Thereafter one resource will be needed to debug and remediate subsequent outage events.
+Table 8 shows the output from a G/G/1 simulation using the parameters from our data set. There are two columns: Time (Measured in minutes) and Queue length. Let assume that  we have uptime from 12:00 1st of January. Looking at the output below we can see that we will need one resource to service the first  thirteen outage events. These thirteen outages will arrive and be serviced in sixteen days. Looking at the fourteenth outage event we can see this event will arrive at approximately 11:18 on the 16th of January. DevOps Management have a good indication that two DevOps resources will be required at this time.  One to service the thirteenth outage and a second resource to service the overlapping fourteenth outage. DevOps management can also infer that both resources will be required for only for a short duration. In this case eight minutes approximately. Thereafter one resource will be needed to debug and remediate subsequent outage events.
 
-Another application of the queue simulation model is to assess staffing requirements over a calendar year. By knowing the duration of a year in minutes (525600) , we can easily check to see how many events will occur during a calendar year. In a simulation conducted for the purposes of this example we found the queue length was greater than 1 on 28 occasions. 27 times the queue length = 27 and once the queue length = 3. Clearly these types of what if scenario is very useful for resource planners.
+Another application of the queue simulation model is to assess staffing requirements over a calendar year. By knowing the duration of a year in minutes (525600) , we can easily check to see how many events will occur during a calendar year. In a simulation conducted for the purposes of this example we found the queue length was greater than 1 on 28 occasions. 27 times the queue length = 2 and once the queue length = 3. A final application is to look at the queue busy time in a given calendar year. If we add the times the queue is busy (i.e. time difference between the queue length being 1 or more and 0) for outages that occur over the period of a year, we can see that the queue will be busy for approximately 144 days. Clearly these types of what if scenarios are very useful for resource planners.
 
 
 \begin {table}
@@ -463,16 +481,6 @@ Another application of the queue simulation model is to assess staffing requirem
 \end{table}
 
 
-\subsection{Correlation between inter-arrival and service times}
-
-Using a myriad of tests we have answered our fourth research question: Are inter-arrival and service times correlated? Our results show that there is little evidence to suggest a correlation between inter-arrival and service times.
-
-Figure 3 showed graphically how both variables were correlated not only with themselves but each other. Given the low number of lags crossing the confidence interval coupled with the sparse positioning of these lags, there is little evidence to suggest any meaningful correlation. Likewise we saw similar results from both the Pearson, Spearman, and linear regression tests. 
-
-DevOps team can use this result in a number of ways. An ideal goal for a cloud based business is to have as near to 100\% uptime as possible, while ensuring that when an outage does occur, that the time to service such an outage is as short as possible. In other words having very long inter-arrival times between outage events and very short service times is highly desirable. The goal for each requires a separate solution, in the case of long inter-arrival times ensuring that when a system does fail, it fails gracefully without any loss of service. In the case of service times, having an advanced suite of system monitoring solutions coupled with a simple system of rollback to prior code versions and/or configuration changes is key. 
-
-Given the lack of correlation between inter-arrival and service times, DevOps team can be confident that processchanges to reduce service times will not lead to a reduction in inter-arrival times. Moreover with increased reliability brings longer inter-arrival times, this in essence will not lead to longer service times.
-
 \subsection{Assessment for no association and linkage between overlapping outage events}
 
 Our results section has highlighted there there is an association between outage events that overlap and outages which are linked (i.e. cascade failures).
@@ -481,21 +489,27 @@ Table 6 provides a good insight into the nature of linked outage events we saw t
 
 Table 7 highlights that overlapping outages are uncommon with approximately 8\% of all outages recorded over an eighteen month period overlapped. Additionally linked outages are rarer still with only approximately 2\% recorded over the same duration. However as demonstrated by the results of Fisher's test, there is overwhelming evidence to suggest that both events are associated. We can calculate when an overlapping event occurs there is a approximately a 25\% probability that these events are linked. Removal of these types of failures is key to the success of a business and will lead to increased customer satisfaction by increased up time. 
 
-DevOps teams can learn from these results, linked failures cause additional workloads for small teams. From a remediation perspective, DevOps team can work with their software development counterparts to ensure their infrastructure and software are more resistance to temporal network outages. By conducting a series of negative tests teams can determine how gracefully their systems fail under scenarios likes temporal network outages. Additionally by setting invalid parameters within a large distributed system can have knock on effects. It it worth pointing out that by introducing a system of managed configuration changes (similar to developer code reviews prior to checkin), can help alleviate the problems encountered with invalid configuration changes.
+DevOps teams can learn from these results, linked failures cause additional workloads for small teams. From a remediation perspective, DevOps team can work with their software development counterparts to ensure their infrastructure and software are more resistance to temporal network outages. By conducting a series of negative tests teams can determine how gracefully their systems fail under scenarios like temporal network outages. Additionally by setting invalid parameters within a large distributed system can have knock on effects. It it worth pointing out that by introducing a system of managed configuration changes (similar to developer code reviews prior to checkin), can help alleviate the problems encountered with invalid configuration changes.
 
 \section{Conclusion}
 
-The purpose of this research was to examine which probability distributions could be used to best model inter-arrival and service times of outages. By using the best fitting distributions as part of a special case of the G/G/1 queue modelling system, this study demonstrated how this model can be used to determine the busy time of a Cloud outage queue system. Additionally this study examined the correlation between inter-arrival and service times. Furthermore we observed whether overlapping outage events are  linked.
+One purpose of this research was to examine which probability distributions could be used to best model inter-arrival and service times of outages. By using the best fitting distributions as part of a special case of the G/G/1 queue modelling system, this study demonstrated how this model can be used to determine the busy time of a Cloud outage queue system. Additionally this study examined the correlation between inter-arrival and service times. Furthermore we observed whether overlapping outage events are  linked.
 
 It was found that inter-arrival and service times of Cloud outage events could be reasonably modelled with a Pareto and lognormal distribution respectively. Additionally by using these distributions, a queue model framework could be built to infer the percentage busy time of this queue with a good degree of accuracy. Furthermore we found no evidence of correlation between inter-arrival and service times. Finally our research showed that there is evidence to suggest that overlapping outage events are linked.
 
 The findings of this study support previous work specifically in the field of repair times of maintainable Cloud based software systems. This work provides  more comprehensive analysis of the inter-arrival times of Cloud outage events and how using inter-arrival and service time distributions a useful special case of the G/G/1 can be developed to determine queue busy time. 
 
-However the main application of this research is to DevOps and project planners within an SME or micro teams. Both can leverage this framework to build an accurate resource planning model which can both identify skill and personal gaps. Identification and remediation of these gaps will greatly benefit teams in the challenging area of Cloud outage resolution.
+However the main application of this research is to DevOps and project planners within an SME or micro team. Both can leverage this framework to build an accurate resource planning model which can both identify skill and personal gaps. Identification and remediation of these gaps will greatly benefit teams in the challenging area of Cloud outage resolution.
 
-\section{Future work}
+By using the simple queue as a starting point, future work is planned to validate the framework in the context of a complex queuing system (i.e. a queue with multiple "servers"). John \cite{john1963single} discusses dependencies between inter-arrival and services times within a queue system as the assumption of independence between the two times are not always valid.
 
-By using the simple queue as a starting point, future work is planned to validate the framework in the context of a complex queuing system (i.e. a queue with multiple "servers"). John \cite{john1963single} discusses dependencies between inter-arrival and services times within a queue system as the assumption of independence between the two times are not always valid. \par Future work will also include research into the relationship between inter-arrival and service time durations and how these durations relate to service level agreement impact.
+Also of interest is the wear our characteristics of specific software components. Conducting a study of Cloud outages as part of a wider renewal process study we can understand the the mean time to failure of a given component.  With the age (uptime) of a component known, how likely is such a component to fail? Finally how often does a component need to be replaced and what role does hygienic recycling play in system stability?
+
+Future work will also include research into the relationship between inter-arrival and service time durations and how these durations relate to service level agreement impact.
+
+\section{Acknowledgements}
+
+This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
 
 \section*{References}
 
