@@ -81,6 +81,8 @@ Outage simulation \sep Resource allocation model \sep Queuing Theory \sep Cloud 
 \section{Introduction}
 Cloud outage prediction and resolution is an important activity in the management of a Cloud service. Recent media reports have documented cases of Cloud outages from high profile Cloud service providers \cite{CRN2016outage}. During 2016 alone the CRN website has documented the ten highest profile Cloud outages to have occurred so far.  Due to the increasing complex nature of the data centre infrastructure, coupled with the rapid continuous delivery of incremental software updates, it seems that Cloud outages are with us for the time being.
 
+% Added references for monitoring solutions
+
 For operations teams that maintain a Cloud infrastructure, they rely on state of the art monitoring and alert systems to determine when an outage occurs. Examples of monitoring solutions include: New Relic \cite{newrelic}, IBM Predictive Insights \cite{predinsight} and Ruxit \cite{ruxit}. Once a new outage is observed, depending on the outage type (e.g. Software component, infrastructure, hardware etc), additional relevant experts may be called to remediate the issue. The time taken to resolve the issue may depend on a number of factors: ability to find the relevant expert, swift problem diagnosis and velocity of pushing a fix to production systems. 
 
 Both SME's and micro teams within large organisation's face a number of challenges when adopting a Cloud platform and a mechanism to deliver products and services. A number of recent studies have outlined that both frequency and duration of outage events are key challenges \cite{InfoWorld2015outage}. Almost all European SME's (93\%) employ less than ten people \cite{europa2015sme}. Ensuring that adequate skills and resources are available to accommodate incoming outage events is highly desirable.
@@ -90,6 +92,8 @@ In this paper we propose a framework that a micro team or SME's can leverage to 
 The core idea of this framework is for operations teams to use a special case of the G/G/1 queue to model the inter-arrival and service times of outage events. This article consists of a study of outage event data from a large enterprise dataset. By modelling both inter-arrival and service outage times, a special case of the G/G/1 queue is developed. This G/G/1 queue is then tested against an off the shelf queue model (M/M/1) to compare and contrast queue busy time prediction. Finally our framework also considers dependence between overlapping outage events. 
 
 To help researchers reproduce and extend this study, pseudo-code of the queue modelling framework is provided. By utilising this queue framework, researches will have the ability to test their preferred case of the G/G/1 model against the M/M/1 model.
+
+% Moved the justification for Queuing over Renewal Reward systems to here
 
 It should be noted that the area of it should be noted that the branch of probability theory called: Renewal Reward Process \cite{blackwell1948renewal}\cite{jewell1967simple} was also considered as part of this study. In fact on closer inspection the processes are quite similar.  For example the time between successive outages on a Cloud system could be assigned as the holding times, the rewards may be seen as the repair costs (service times) for each outage event. However a key application of this study is to understand whether a queue model could be used to simulate outage arrivals. If an effective simulation model can be found, can we use this model to aid resource planning of personnel within a micro team or SME.
 
@@ -101,7 +105,15 @@ In the current literature a framework to model Cloud outage events is absent. Th
 
 Another consideration is the idea of event dependence. Typical off the shelf single-server queue models such as M/M/1 and G/G/1 assume that the inter-arrival and service times between events are independent \cite{MM1}. However if some form of dependence is found between events how useful would a queuing model which assumes independence compare against that of a queuing model with dependence properties.
 
-Further motivation is driven by recent reports and studies into the adoption of Cloud computing.  Carcary et al. \cite{carcary2014adoption} conducted a study into Cloud computing adoption by Irish SME's. The key findings of the study were as follows: Almost half the 95 SME's surveyed had not migrated their services to the Cloud. Of those SME's that had migrated they had not assessed their readiness to adopt Cloud computing. Finally the study noted that the main constraints for SME's adoption of Cloud computing were: Security/compliance concerns, lack of IT skills and data protection concerns. Gholami et al. \cite{gholami2016Cloud} provided a detailed review of current Cloud migration processes. One of the main migration concerns mentioned was the unpredictability of a Cloud environment. Factors that led to this unpredictability included: Network outages and middleware failures. The study concluded that a fixed migration approach is not possible to cover all migration scenarios due to architecture heterogeneity.
+% Research Questions here
+
+This study aims to answer a number of questions. First, how are the inter-arrival times of Cloud outage events distributed? Second, How are the service times of Cloud outage events distributed?  Third, How can an effective queuing model be built to simulate outage event traffic? Fourth, How are inter-arrival and service times correlated? Fifth, are overlapping outage events related or can we treat each event as independent? 
+
+% Research Questions above
+
+% Additional UK and EU studies added in this paragraph
+
+Further motivation is driven by recent reports and studies into the adoption of Cloud computing.  Carcary et al. \cite{carcary2014adoption}, Alshamaila et al.  \cite{alshamaila2013cloud} and Oliveira et al. \cite{oliveira2014assessing} all conducted studies on Cloud computing adoption by SMEs. The general consensus is that, there is no single factor which impedes Cloud adoption. The main constraints noted were: Security/compliance/data protection along with geo-restriction and compatibility to legacy systems. It was also noted that manufacturing and services sectors have different concerns in relation to Cloud computing adoption. Which indicates some level of customisation is required to meet the needs across different industries. Additionally Gholami et al. \cite{gholami2016Cloud} provided a detailed review of current Cloud migration processes. One of the main migration concerns mentioned was the unpredictability of a Cloud environment. Factors that led to this unpredictability included: Network outages and middleware failures. The study concluded that a fixed migration approach is not possible to cover all migration scenarios due to architecture heterogeneity.
 
 The rest of this article is divided up into the following sections: Section 2 introduces background and related work. Section 3 discusses the data set collected (and associated study terminology), outlines the questions that are answered by this study and the limitations of the dataset. Section 4 outlines the experimental approach and associated results. Section 5 discusses the results of our experiments. Finally in Section 6, we conclude this paper and discuss future work.
 
@@ -112,7 +124,7 @@ The following section provides some background information on two common Cloud s
 \subsection{Software as a Service}
 SaaS is defined as a delivery and licensing model in which software is used on a subscription basis (e.g. monthly, quarterly or yearly) and where applications or services are hosted centrally \cite{Cloudbook2015}. The key benefits for software vendors are the ability for software to be available on a continuous basis (on-demand) and for a single deployment pattern to be used. It is this single deployment pattern that can greatly reduce code validation times in pre-release testing, due to the homogeneous architecture. Central hosting also allows for rapid release of new features and updates through automated delivery processes \cite{datacentre2015}. 
 
-SaaS is now ubiquitous, while initially adopted by large software vendors (e.g. Amazon, Microsoft, IBM, Google and Salesforce) many SME's are now using the Cloud as their delivery platform and licensing model of choice \cite{CRN2015providers}. 
+SaaS is now ubiquitous, while initially adopted by large software vendors (e.g. Amazon, Microsoft, IBM, Google and Salesforce) many micro teams SMEs are now using the Cloud as their delivery platform and licensing model of choice \cite{CRN2015providers}. 
 
 \subsection{Platform as a Service}
 PaaS is defined as a delivery and platform management model. This model allows customers to develop and maintain Cloud based software and services without the need for building and managing a complex Cloud based infrastructure.
@@ -215,7 +227,7 @@ Prior to outlining our research questions, it is useful to understand why queuin
 
 Both micro teams and SME's have less than ten employees \cite{eusmereport2015}, yet are adopting the Cloud as a method to deliver software and services. Given the unpredictability of Cloud infrastructure architecture, this study is required to understand whether a micro team / SME has adequate resources to manage future Cloud outage events. 
 
-This study aims to answer a number of questions. First, how are the inter-arrival times of Cloud outage events distributed? Second, How are the service times of Cloud outage events distributed?  Third, can an effective queuing model be built to simulate outage event traffic? Fourth, are inter-arrival and service times correlated? Fifth, are overlapping outage events related or can we treat each event as independent? 
+We shall now discuss the background and method of our research questions in the following subsections.
 
 \subsection{Inter-arrival time distribution}
 
