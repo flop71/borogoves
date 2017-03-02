@@ -161,7 +161,8 @@ Table I provides a summary of highest profile Cloud outages observed so far this
 \end{flushleft}
 \end{table*}
 
-\subsection{Other related studies}
+% Modified the name of the section 2.4
+\subsection{Cloud outage and software reliability studies}
 A number of studies have been conducted in relation to Cloud outages. Additionally, research has been carried on the time observed to service problems in repairable systems.  A summary of these studies are discussed below. \par
 
 Yuan et al. \cite{yuan2014simple} performed a comprehensive study of distributed system failures. Their study found that almost all failures could be reproduced on reduced node architecture and that performing tests on error handling code could have prevented the majority of failures. They conclude by discussing the efficacy of their own static code checker as a way to check error-handling routines. \par
@@ -186,7 +187,11 @@ Almog \cite{almog1979study} analysed repair data from twenty maintainable electr
 
 Adedigba \cite{adedigba2005statistical} analysed the service times from a help desk call centre. Her study showed that the exponential distribution did not provide a reasonable fit for call centre service times. However a log-normal distribution was a reasonable fit for overall service times. Her study also showed that a phase-type distribution with three phases provided a reasonable fit for service times for specific jobs within the call centre job queue. \par
 
-As can be seen from the literature review a number of studies have been conducted into Cloud outage failures and the inter-arrival / repair times of computer systems. However there are no studies that conduct end to end research of outage events to build a framework to predict the likely busy time and resource management of DevOps teams. This framework aims to plug a gap in the current literature mentioned above.
+% Added a new reference based on feedback from reviewer #2
+Alsoghayer and Djemame \cite {alsoghayer2014resource} propose a mathematical model to predict the risk of failures with Grid and Cloud based infrastructures. The model uses the observed mean time to failure and the mean to repair for prediction. The authors found the best model to predict the time between failures is a Weibull distribution, while the repair (service) times as best modelled by a lognormal distribution.
+
+% Modified this paragraph as per Review #1's comments
+As can be seen from the literature review a number of studies have been conducted into Cloud outage failures and the inter-arrival / repair times of computer systems. However there are no studies that conduct end to end research of outage events to build a queue model to predict the likely busy time and resource management of DevOps teams. Our proposed queue model aims to plug the gap that has been identified in the current literature.
 
 \section{Data set and research methodology}
 
@@ -227,7 +232,7 @@ Prior to outlining our research questions, it is useful to understand why queuin
 
 Both micro teams and SME's have less than ten employees \cite{eusmereport2015}, yet are adopting the Cloud as a method to deliver software and services. Given the unpredictability of Cloud infrastructure architecture, this study is required to understand whether a micro team / SME has adequate resources to manage future Cloud outage events. 
 
-We shall now discuss the background and method of our research questions in the following subsections.
+This study aims to answer a number of questions. First, how are the inter-arrival times of Cloud outage events distributed? Second, How are the service times of Cloud outage events distributed?  Third, How can an effective queuing model be built to simulate outage event traffic? Fourth, How are inter-arrival and service times correlated? Fifth, are overlapping outage events related or can we treat each event as independent? 
 
 \subsection{Inter-arrival time distribution}
 
