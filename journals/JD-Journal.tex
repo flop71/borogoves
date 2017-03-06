@@ -421,7 +421,6 @@ We found evidence of a link (i.e a common failure pattern) between 7 overlapping
 \begin {table*}[]
 \caption {Summary details of overlapping outages with analysis of component area, root cause and linkage assessment} 
 \begin{flushleft}
-
 \begin{tabular}{l | l | l | p{9cm} l} \bf{Outage} \# & \bf{Component} & \bf{Root Cause} & \bf{Outage Details} 
 \\ \hline  1 & E-mail &  Network & Cascade network failures were observed in the email component.  A second network failure was observed due to latency caused by the first network failure. Assessment: Outages linked.
 \\ \hline 2 & E-mail  & Network/Configuration & A network bottleneck was observed. A configuration change was made to alleviate the bottleneck, this change caused additional bottlenecks. Assessment: Outages linked.
@@ -453,6 +452,21 @@ Table 7 shows a 2 by 2 contingency table which contains counts of overlapping, n
 Section 4 presented the results of distribution fitting, queue modelling and test for no association between overlapping outage events. The following section provides deeper analysis and discussion of these results. In each section references will be made to each research question asked in section 3. 
 
 Prior to a detailed discussion of our results, we summarise the results along with each corresponding research question. Table 8 provides this summary
+
+\begin {table*}[]
+\caption {Summary of research questions and results} 
+\begin{flushleft}
+\begin{tabular}{l p{5cm} | l | p{5cm} l} \bf{Research Question} \# & \bf{Results} & \bf{Literature} 
+\\ \hline  1. How are the inter-arrival times of Cloud outage events distributed? & E-mail & Cascade 
+\\ \hline 2 & E-mail  & A network 
+\\ \hline 3 & E-mail  &  A failover 
+\\ \hline 4 & Social & A number
+\\ \hline 5 & E-mail & A temporal 
+\\ \hline 
+ \end{tabular}
+\end{flushleft}
+\end{table*}
+
 
 \subsection{Inter-arrival time distribution}
 
