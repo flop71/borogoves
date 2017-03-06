@@ -4,6 +4,8 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+
 
 \modulolinenumbers[5]
 
@@ -244,11 +246,20 @@ This study aims to answer a number of questions. First, how are the inter-arriva
 
 \subsection{Inter-arrival time distribution}
 
-Probability distributions are used in statistics to infer how likely it is for an event to happen. In the case of Cloud outage inter-arrival times,  we can analyse the data and determine which distribution is the best fit. The properties of a distribution can then be used to infer the likelihood of an event happening. For distribution fitting, we used the R package fitdistrplus \cite{fitdistrplus} to fit various distributions to our dataset. To validate the efficacy of each distribution,  the authors used the R package ADGofTest \cite{ADGoF}. 
+Probability distributions are used in statistics to infer how likely it is for an event to happen. In the case of Cloud outage inter-arrival times,  we can analyse the data and determine which distribution is the best fit. The properties of a distribution can then be used to infer the likelihood of an event happening. For distribution fitting, we used the R package fitdistrplus \cite{fitdistrplus} to fit various distributions to our dataset. To validate the efficacy of each distribution,  the authors used the R package ADGofTest \cite{ADGoF} which uses the Anderson-Darling goodness of fit test to determine if the observed data follows a specific distribution \cite {anderson1952asymptotic}.
 
 \subsection{Service time distribution}
 
 This study has similar motivations for Cloud outage service times. Being able to determine a probability distribution that best fits this outage event dataset is a useful exercise. By combining both inter-arrival and service time distributions a queue system can then be built. This queue system can be used to model the arrival and service times of Cloud outage events. The approach to distribution fitting and validation, is the same as described in the previous sub-section. 
+
+\subsection{Outage event modelling framework}
+
+Queuing models have been used previously across many sciences to simulate the arrival and service times for a collection of events. Typically observed inter-arrival and service times data is used to derive a suitable fitting distribution. Thereafter the distribution parameters (i.e. mean, rate, shape, scale etc) are used to simulate queue traffic. Simulations allow large experiments to be undertaken which could not be conducted with the real system, and to make predictions of future behaviour.
+
+For this study we look at how a queuing system can be used to model Cloud outage events. Our queue system was developed using the C programming language. Our study conducted 1M simulations against a G/G/1 system based on fitted sample distributions. Furthermore our study also conducted the same number of simulations against an M/M/1 queue. For the mean inter-arrival and service times we used the computed means from our Pareto and lognormal distributions.
+
+An assessment of the usefulness of such simulations is given within the context of resource management within a micro team or SME. Can such simulations provide a reasonable degree of precision to aid resource planning of DevOps / Tiger teams with constrained levels of staffing?
+
 
 \subsection{Correlation between inter-arrival and service times}
 
@@ -266,13 +277,6 @@ For our correlation assessment we used the following functions found in the base
 
 Correlation tests can also be used to determine dependence between variables, however we shall discuss a specific aspect of dependence in section 3.5. 
 
-\subsection{Outage event modelling framework}
-
-Queuing models have been used previously across many sciences to simulate the arrival and service times for a collection of events. Typically observed inter-arrival and service times data is used to derive a suitable fitting distribution. Thereafter the distribution parameters (i.e. mean, rate, shape, scale etc) are used to simulate queue traffic. Simulations allow large experiments to be undertaken which could not be conducted with the real system, and to make predictions of future behaviour.
-
-For this study we look at how a queuing system can be used to model Cloud outage events. Our queue system was developed using the C programming language. Our study conducted 1M simulations against a G/G/1 system based on fitted sample distributions. Furthermore our study also conducted the same number of simulations against an M/M/1 queue. For the mean inter-arrival and service times we used the computed means from our Pareto and lognormal distributions.
-
-An assessment of the usefulness of such simulations is given within the context of resource management within a micro team or SME. Can such simulations provide a reasonable degree of precision to aid resource planning of DevOps / Tiger teams with constrained levels of staffing?
 
 \subsection{Assessment for no association and linkage between overlapping outage events}
 
@@ -451,17 +455,17 @@ Table 7 shows a 2 by 2 contingency table which contains counts of overlapping, n
 
 Section 4 presented the results of distribution fitting, queue modelling and test for no association between overlapping outage events. The following section provides deeper analysis and discussion of these results. In each section references will be made to each research question asked in section 3. 
 
-Prior to a detailed discussion of our results, we summarise the results along with each corresponding research question. Table 8 provides this summary
+Prior to a detailed discussion of our results, we summarise the results along with each corresponding research question and relevance background literature. Table 8 provides this summary
 
 \begin {table*}[]
-\caption {Summary of research questions and results} 
+\caption {Summary of research question, results and background literature} 
 \begin{flushleft}
-\begin{tabular}{| p{6.5cm} | p{5.5cm} | p{5cm} |} \bf{Research Question} \# & \bf{Results} & \bf{Literature} 
-\\ \hline 1. How are the inter-arrival times of Cloud outage events distributed? & Pareto distribution is the best fit. AD test statistic = 0.53, p-value = 0.72  & 
-\\ \hline 2. How are the service times of Cloud outage events distributed? & lognormal distribution is the best fit. AD test statistic = 0.34, p-value = 0.90 & 
-\\ \hline 3. How can an effective queuing model be built to simulate outage event traffic? & Our simulation achieved 72\% precision in predicting queue busy / free times compared to observed data. &  
-\\ \hline 4. How are inter-arrival and service times correlated? & Weak evidence of association between internal-arrival and service times. p-value of 0.297 & 
-\\ \hline 5. Are overlapping outage events related or can we treat each event as independent? & Strong evidence of no association. p-value of less than 0.001  & 
+\begin{tabular}{| p{6.5cm} | p{5.5cm} | p{5cm} |} \hline \bf{Research Question}  & \bf{Results} & \bf{Literature} 
+\\ \hline 1. How are the inter-arrival times of Cloud outage events distributed? & Pareto distribution is the best fit. \par AD test statistic = 0.53 \par p-value = 0.72  & Anderson-Darling goodness of fit test. \cite {anderson1952asymptotic}
+\\ \hline 2. How are the service times of Cloud outage events distributed? & lognormal distribution is the best fit. \par AD test statistic = 0.34 \par p-value = 0.90 & Anderson-Darling goodness of fit test. \cite {anderson1952asymptotic}
+\\ \hline 3. How can an effective queuing model be built to simulate outage event traffic? & Our simulation achieved 72\% precision in predicting queue busy / free times compared to observed data. &  Queuing theory. \cite{kleinrock1975queuing}\cite{gross2008fundamentals}
+\\ \hline 4. How are inter-arrival and service times correlated? & Weak evidence of association between internal-arrival and service times. \par p-value = 0.297 & Ranked coefficients. \cite{fisher1915frequency}\cite{spearman1904proof} \par Linear regression. \cite{galton1890kinship} \par Autocorrelation. \cite{box1970distribution}
+\\ \hline 5. Are overlapping outage events related or can we treat each event as independent? & Strong evidence of association between overlapping outage events. \par p-value \textless 0.001 & Fishers exact test for independence. \cite{fisher1922interpretation}\cite{fisher1925statistical}
 \\ \hline 
  \end{tabular}
 \end{flushleft}
@@ -470,6 +474,7 @@ Prior to a detailed discussion of our results, we summarise the results along wi
 
 \subsection{Inter-arrival time distribution}
 
+% Research Question 1 answered here.
 The results section has shown that the Pareto distribution is a good fit to model the inter-arrival times of Cloud outage events, which answers our first research question.
 
 The decision to use Pareto as an inter-arrival time distribution is an interesting choice. The Pareto distribution is a power law distribution and has applications in many fields of science. However the field where a Pareto distribution is typically used is in the area of finance. Specifically for modelling income and wealth \cite{arnold2015pareto}. 
@@ -480,6 +485,7 @@ This study has answered our first research question: What distribution can be us
 
 \subsection{Service time distribution}
 
+% Research Question 2 answered here.
 We have learned from our results that the lognormal distribution is an excellent fit to model the service times of Cloud outage events recorded in our dataset. 
 
 The log-normal distribution is important in the description of natural events. Many natural occurring processes are modelled by the culmination of incremental changes. Such processes include general system usage, vehicle milage per year, count of switch operations and wearout characteristics of machines and systems. This distribution is also versatile in that depending on the location and scale parameters a number of different distribution shapes can be accommodated. 
@@ -491,7 +497,8 @@ This study has answered our second research question: What distribution can be u
 
 \subsection{Outage event modelling framework}
 
-We asked the question: How can an effective queuing model be built to simulate outage event traffic? The result from our experiment model shows that a model can be built which is provides a good level of precision compared to observed data.
+% Research Question 1 answered here.
+We asked the question: How can an effective queuing model be built to simulate outage event traffic? The result from our experiment model shows that, by combining well fitted distributions for both inter-arrival and service times a model can be built which provides a good level of precision, (72\%) compared to observed data. 
 
 Table 5 provides a summary of the \% busy and free time for our observed data and for two sets of simulations: G/G/1 and M/M/1 queues. It is unsurprising that M/M/1 lacks precision. There are two factors to consider here. First that neither the inter-arrival nor service distributions could be adequately modelled using an exponential distribution. We recall from Tables 2 and 3 the AD test statistic for the exponential distribution was infinite. For the purposes of the simulation we used the computed means from the Pareto and lognormal distributions. Second the M/M/1 queue assumes that the arrival times between events are independent. We have shown that a small proportion (2\%) of overlapping outage events are linked. These two factors make the M/M/1 queue unsuitable for queue simulation based on the observed data.
 
@@ -534,6 +541,7 @@ Another application of the queue simulation model is to assess staffing requirem
 
 Using a myriad of tests we have answered our fourth research question: How are inter-arrival and service times correlated? Our results show that there is little evidence to suggest a correlation between inter-arrival and service times.
 
+% Research Question 4 answered here.
 Figure 3 showed graphically how both variables were correlated not only with themselves but each other. Given the low number of lags crossing the confidence interval coupled with the sparse positioning of these lags, there is little evidence to suggest any meaningful correlation. Likewise we saw similar results from both the Pearson, Spearman, and linear regression tests. 
 
 DevOps team can use this result in a number of ways. An ideal goal for a cloud based business is to have as near to 100\% uptime as possible, while ensuring that when an outage does occur, that the time to service such an outage is as short as possible. In other words having very long inter-arrival times between outage events and very short service times is highly desirable. The goal for each requires a separate solution, in the case of long inter-arrival times ensuring that when a system does fail, it fails gracefully without any loss of service. In the case of service times, having an advanced suite of system monitoring solutions coupled with a simple system of rollback to prior code versions and/or configuration changes is key. 
@@ -547,7 +555,8 @@ Our results section has highlighted there there is an association between outage
 
 Table 6 provides a good insight into the nature of linked outage events we saw that in five of the seven linked outages that E-mail was a common component. Likewise we observed that network and configuration issues were the root causes in four of the seven outages, this may not be a coincidence. In one other case we saw that in a disaster recovery scenario, server node failover did not work as expected which caused a cascade failure due to high concurrency.
 
-Table 7 highlights that overlapping outages are uncommon with approximately 8\% of all outages recorded over an eighteen month period overlapped. Additionally linked outages are rarer still with only approximately 2\% recorded over the same duration. However as demonstrated by the results of Fisher's test, there is overwhelming evidence to suggest that both events are associated. We can calculate when an overlapping event occurs there is a approximately a 25\% probability that these events are linked. Removal of these types of failures is key to the success of a business and will lead to increased customer satisfaction by increased up time. 
+% Research Question 5 answered here. Added an additional sentence
+Table 7 highlights that overlapping outages are uncommon with approximately 8\% of all outages recorded over an eighteen month period overlapped. Additionally linked outages are rarer still with only approximately 2\% recorded over the same duration. However as demonstrated by the results of Fisher's test, there is overwhelming evidence to suggest that both events are associated. Therefore overlapping outage events are related. We can calculate when an overlapping event occurs there is a approximately a 25\% probability that these events are linked. Removal of these types of failures is key to the success of a business and will lead to increased customer satisfaction by increased up time. 
 
 DevOps teams can learn from these results, linked failures cause additional workloads for small teams. From a remediation perspective, DevOps team can work with their software development counterparts to ensure their infrastructure and software are more resistance to temporal network outages. By conducting a series of negative tests teams can determine how gracefully their systems fail under scenarios like temporal network outages. Additionally by setting invalid parameters within a large distributed system can have knock on effects. It it worth pointing out that by introducing a system of managed configuration changes (similar to developer code reviews prior to checkin), can help alleviate the problems encountered with invalid configuration changes.
 
