@@ -197,7 +197,10 @@ As can be seen from the literature review a number of studies have been conducte
 
 Cloud outage studies have been shown to provide an effective way to highlight common failure patterns \cite{InfoWorld2015outage}. In this and subsequent sections our study will present a data set and queuing model. The aim of which is to illustrate its efficacy in modelling Cloud outage events. 
 
-Our dataset is taken from an enterprise cloud system which details all outage events over an eighteen month period. In each case we had access to the full outage report log. A number of points related to the dataset are summarised in Table 2. 
+% added a comment on what resources were modelled.
+Our dataset is taken from an enterprise cloud system which details all outage events over an eighteen month period. In each case we had access to the full outage report log. For each outage, we observed the arrival time of each event and how long each outage took to repair. With each arrival time known the inter-arrival time between each outage was computed. We used the repair time duration as the service time.
+
+A number of points related to the dataset are summarised in Table 2. 
 
 \begin {table*}[]
 \caption {Summary of dataset metrics} 
@@ -216,16 +219,21 @@ Our dataset is taken from an enterprise cloud system which details all outage ev
 \end{center}
 \end{table*}
 
+% added an extra paragraph to justify the metrics shown
+It is important to affirm the Programming Language, OS, Hardware and Load Balancing solution used as part of the Enterprise solution. These metrics may be underlying factors in the root cause of the observed outages. Further investigation into the root cause of each is beyond the scope of this article. We discuss this matter in our Study limitations subsection below.
+
 Product development follows a Continuous delivery (CD) model whereby small amounts of functionality are released to the public on a monthly basis. This study focuses on the following aspects of the outage event data: The inter-arrival time between each outage, the time to service each outage event and whether or not overlapping outage events are related.
 
-The following terminology will now be defined to provide clear context. These definitions are referenced from wikipedia as no formal standarised definitions could be obtained \cite{wikidef}.
+% Added DevOps books as reference points
+The following terminology will now be defined to provide clear context. These majority of these definitions are referenced from a number of sources such as ``What is DevOps?'' by Mike Loukides \cite{loukides2012devops} and ``The Phoenix Project'' by Kim et al. \cite{kim2014phoenix}.
 
 \begin{description}
  \item [Downtime (Outage)] The term downtime is used to refer to periods when a system is unavailable. Downtime or outage duration refers to a period of time that a system fails to provide or perform its primary function. 
  \item  [Micro Team] In information technology a micro team is typically staffed by three to five persons. Each person within the group has a specific role; Developer, Test Engineer, Automation specialist and a people manager. With each skill set clearly defined there is little to no overlap in terms of role definition. Each role within the team can be considered a single point of failure.
   \item [Tiger Team] A tiger team is a group of experts assigned to investigate and/or solve technical or systemic problems. 
- \item [DevOps] Is a practice that highlights the collaboration between software development and infrastructure personnel. DevOps may also refer to a team whos core function is to build, deploy and maintain a Cloud infrastructure. 
- \item [Queuing theory] Is the study of events that form waiting lines or queues. In queuing theory, a model is constructed so that queue lengths, inter-arrival and service times can be predicted \cite{sundarapandian2009probability}.
+ \item [DevOps] Is a practice that highlights the collaboration between software development and infrastructure personnel. DevOps may also refer to a team which has a core function to build, deploy and maintain a Cloud infrastructure. 
+% Added Queuing theory books as reference points
+ \item [Queuing theory] Is the study of events that form waiting lines or queues. In queuing theory, a model is constructed so that queue lengths, inter-arrival and service times can be predicted \cite{kleinrock1975queuing, gross2008fundamentals, sundarapandian2009probability}.
 \end{description}
 
 Prior to outlining our research questions, it is useful to understand why queuing theory could be used to model Cloud outages events. Outages begin at a specific point in time. The problem is then diagnosed and serviced by tiger and DevOps teams. These characteristics are very similar to the properties of a queue system (i.e. inter-arrival times, service times and queue length). 
@@ -276,11 +284,15 @@ The following method will be used: Defect outage reports will be analysed to det
 
 The dataset has a number of practical limitations, which are now discussed. The event data collected for this study comprised of outage reports from an enterprise system deployed over three data centres. For the purposes of event modelling the authors have assumed a simple queue. In other words a queuing system with one \lq\lq server\rq\rq. Given the lack of studies in the area of modelling Cloud outage events within a queuing framework, the authors wanted to validate such a framework in the context of a simple queue initially. 
 
+% Section on how we could extend to multiple queue systems.
+Bearing in mind that an outage of a specific type (i.e. Hardware, Network, High Availability) will typically affect a single data centre at a time, there is a class of outage (i.e. Software, Configuration) which may effect multiple systems concurrently and in parallel. Our queue model could be extended to a queue with multiple servers using the following approach. The inter-arrival and service times could each data centre could be modelled separately. Using this result we could obtain a per data centre queue busy time. For outages which affect multiple data centres we can model these events isolation to determine the probability of such an event occurring with an overlapping single data centre outage event.
+
 For the M/M/1 simulation, in the absence of a suitably good fitting mean parameter we used the means from our inter-arrival and service time distributions.
 
 The outage events that form part of this study are from an enterprise Cloud system. We recognise that the outage events observed, can have a variety of root causes (i.e. Configuration-Manual, Concurrency-Contention, Hardware, High availability and Network). A number of Concurrency-Contention outage events may be tied to the code base which is specific to this Cloud system. However concurrency and contention issues can occur in distributed computing systems irrespective of the underlying software code.
 
-The hardware used in the Cloud environment is Intel based (i.e. x86\_64), therefore any hardware failures will be applicable to this hardware form factor, that said this a common hardware type.
+% Added additional justification on the use of Java
+The hardware used in the Cloud environment is Intel based (i.e. x86\_64), therefore any hardware failures will be applicable to this hardware form factor, that said this a common hardware type. Additionally the programming language used to code the software services is Java. Any outage events that are related to a software defect should be compared to similar Cloud outage data where Java is used.
 
 The outage events are applicable to the software domain of BSS, Collaboration, Email and social applications. As a consequence the analysis may not be relevant outside of this realm.
 
@@ -315,7 +327,14 @@ The results of the study are now discussed. This section shall follow the same f
 
 Table 3 shows a summary of the seven distributions fitted against the observed inter-arrival time data. Each distribution is listed along with its corresponding Anderson Darling test statistic and p-value. Fig 1 shows four Goodness-of-fit plots for a fitted Pareto distribution: Density, Cumulative Distribution Function (CDF) , Probability (P-P) \cite{gibbons2011nonparametric}  and Quantile (Q-Q) \cite{wilk1968probability}.  
 
-To answer the question of which probability distribution is the most appropriate fit to model the inter-arrival times of Cloud outages, seven continuous distributions were fitted against the data set. To test the goodness of fit an Anderson-Darling (AD) Goodness of fit test was conducted against each probability distribution. With the exception of Pareto and loglogistic distribution, all others were a poor fit indicated by the low p value and the very large AD test statistic. Pareto was found to be the best fit with an AD test statistic of 0.95 and a p-value of 0.38. It is worth noting that as the AD test statistic becomes large the corresponding p-value remains fixed, which explains why the four worst fitting distributions have identical p-values.
+
+To answer the question of which probability distribution is the most appropriate fit to model the inter-arrival times of Cloud outages, seven continuous distributions were fitted against the data set. To test the goodness of fit an Anderson-Darling (AD) Goodness of fit test was conducted against each probability distribution. 
+
+% Added a clarification around why p-values of < 0.05 are less than desirable.
+Our hypotheses question asks: Does the data set follow a specified distribution? We then use a corresponding p-value to test if the data set comes from a chosen distribution. If the p-value is less than 0.05 we can reject the hypothesis (i.e. our data set is unlikely to follow a specific distribution). If the p-value is greater than 0.05 we can accept our hypothesis (i.e. our data is likely to follow a specific distribution). 
+
+
+With the exception of Pareto and loglogistic distribution, all others were a poor fit indicated by the low p value and the very large AD test statistic. Pareto was found to be the best fit with an AD test statistic of 0.95 and a p-value of 0.38. It is worth noting that as the AD test statistic becomes large the corresponding p-value remains fixed, which explains why the four worst fitting distributions have identical p-values.
 
 Fig 1 graphically illustrates the how well the Pareto distribution fits our dataset. The Q-Q plot shows the majority of data fits the distribution model line, with the exception of a number of large quantiles residing outside the model line. Additionally the P-P and CDF plot also indicates that our data set is a good fit for Pareto with the majority of points positioned along the model line / curve. By and large all points reside on the model line with the exception of the probability values between 0.37 and 0.57. However this observation does not undermine the assumption that the Pareto distribution is a reasonable fit for our data set. 
 
@@ -348,25 +367,13 @@ Fig 1 graphically illustrates the how well the Pareto distribution fits our data
 
 Table 4 shows a summary of the seven distributions fitted against the observed service time data. Each distribution is listed along with its corresponding Anderson Darling test statistic and p-value. Fig 2 shows four Goodness-of-fit plots for a fitted lognormal distribution: Density, (CDF), (P-P)  and (Q-Q).  
 
-For the second research question: What probability distribution is an appropriate fit for the observed service times of Cloud outage events, again seven continuous distributions were fitted against the data set. Using the same method for inter-arrival times, an AD Goodness of fit test statistic and p value was computed for each distribution. Both loglogistic and Pareto scored well, however lognormal was found to be the best fitting with an AD test statistic of 0.34 and a p-value of 0.90. All other distributions had a p-value of \textless 0.05. Once again we can see that as the AD test statistic becomes large the corresponding p-values become fixed around a value of 1.83e-06.
+% Added a clarification around why p-values of < 0.05 are less than desirable.
+For the second research question: What probability distribution is an appropriate fit for the observed service times of Cloud outage events, again seven continuous distributions were fitted against the data set. Using the same method for inter-arrival times, an AD Goodness of fit test statistic and p value was computed for each distribution. We also pose the same hypothesis question: Does the data set follow a specified distribution?
+
+Both loglogistic and Pareto scored well, however lognormal was found to be the best fitting with an AD test statistic of 0.34 and a p-value of 0.90. All other distributions had a p-value of \textless 0.05. Once again we can see that as the AD test statistic becomes large the corresponding p-values become fixed around a value of 1.83e-06.
 
 The plots contained in Fig 2 show how the lognormal distribution is a good fit to our dataset. For the Q-Q plot the majority of values fit the distribution line. That said there are a very small number of values with stray from the line, with one obvious extreme value. By and large the fit is very good. Additionally for the P-P plot the values from our dataset either reside on or very close to the line which illustrates the quality of fit.
 
-\subsection{Correlation between inter-arrival and service times}
-
-\begin{figure*}[]
-\begin{center}
-\includegraphics[width=18cm, height=10.5cm]{acf_graph.pdf} 
-\caption{Autocorrelation plots for inter-Arrival and service times}
-\end{center}
-\label{fig:acfgraphs}
-\end{figure*}
-
-Figure 3 shows the results of the autocorrelation test between the sequences of inter-arrival and service times. Starting with the inter-arrival times we can see that the lags at positions 0, 25 and 240 respectively cross the confidence interval. With only three values passing the confidence line (and the lag at position 0 being expected), clearly there is little evidence of a seasonality in the values of inter-arrival times. For service times we observed a number of lags outside the confidence interval at positions 0 --10, 100 --120 and 160. While the correlation at lag 0 is expected, there is weak evidence of seasonality for lower and middle values of service times. Finally looking at the graphs of both inter-arrival and service times, we can see two lags at approximately positions 53 and 140 passing the confidence line. This suggests there is weak evidence of association between the two variables.
-
-In addition to looking at the autocorrelation plots, we also performed tests on corresponding pairs of inter-arrival times and services times to determine their relationship. Both Pearson and Spearman tests of correlation were executed. R\textsuperscript{2} values were computed as 0.06 (Pearson) and 0.06 (Spearman). These results indicate there is a minute positive correlation between inter-arrival and service times.
-
-Finally a we ran a linear regression test using inter-arrival times as the dependent variable and service times as the independent variable. Our hypothesis states: There is no association between inter-arrival and service times. A p-value of 0.297 was computed. We can conclude there is weak evidence against our hypothesis. In other words there is little evidence to suggest that inter-arrival and service times are correlated. 
 
 \subsection{Outage event modelling framework}
 
@@ -382,12 +389,28 @@ Finally a we ran a linear regression test using inter-arrival times as the depen
 \end{center}
 \end{table}
 
-Now that we have shown the results of distribution fitting, we shall now use these distributions to test our special case of our G/G/1 queue model. For the Pareto distribution our rate and shape parameters were computed to be 4.94 and 9404.06 respectively. Our 
-lognormal service distribution had a computed location and scale parameter of 4.58 and 1.30 respectively.
+Now that we have shown the results of distribution fitting, we shall now use these distributions to test our special case of our G/G/1 queue model. For the Pareto distribution our rate and shape parameters were computed to be 4.94 and 9404.06 respectively. Our lognormal service distribution had a computed location and scale parameter of 4.58 and 1.30 respectively.
 
 Table 5 shows a summary of the queue model experiments conducted as well as details of the observed outage data over an eighteen month period. The model type defines whether observed data or a simulation was conducted. The type of simulation is also included. The \% Busy and \% Free columns relate to the number of overlapping events in the queue. Specifically, we counted the number of times an outage event (either observed or simulated) entered the queue system while an existing outage was currently being serviced. This value is presented as an overall percentage. 
 
 As we can see from Table 5, for the observed data the queue was free approximately 92\% (i.e. either 0 or 1 outage was being served) and approximately 8\% of the time the queue was busy (i.e. while an outage was being served another outage event arrived). Comparing the results of both simulations: the G/G/1 simulation compared favourability with the observed results with approximately 94\% and 6\% free and busy time. However the M/M/1 simulation compared less well with 97\% and 3\% free and busy time. Clearly the G/G/1 model gives a better prediction then the M/M/1 model. However the model is still a little optimistic in terms of its forecasting of busy and free times.
+
+% Moved this section 4th as it maps to the fourth research question
+\subsection{Correlation between inter-arrival and service times}
+
+\begin{figure*}[]
+\begin{center}
+\includegraphics[width=18cm, height=10.5cm]{acf_graph.pdf} 
+\caption{Autocorrelation plots for inter-Arrival and service times}
+\end{center}
+\label{fig:acfgraphs}
+\end{figure*}
+
+Figure 3 shows the results of the autocorrelation test between the sequences of inter-arrival and service times. Starting with the inter-arrival times we can see that the lags at positions 0, 25 and 240 respectively cross the confidence interval. With only three values passing the confidence line (and the lag at position 0 being expected), clearly there is little evidence of a seasonality in the values of inter-arrival times. For service times we observed a number of lags outside the confidence interval at positions 0 --10, 100 --120 and 160. While the correlation at lag 0 is expected, there is weak evidence of seasonality for lower and middle values of service times. Finally looking at the graphs of both inter-arrival and service times, we can see two lags at approximately positions 53 and 140 passing the confidence line. This suggests there is weak evidence of association between the two variables.
+
+In addition to looking at the autocorrelation plots, we also performed tests on corresponding pairs of inter-arrival times and services times to determine their relationship. Both Pearson and Spearman tests of correlation were executed. R\textsuperscript{2} values were computed as 0.06 (Pearson) and 0.06 (Spearman). These results indicate there is a minute positive correlation between inter-arrival and service times.
+
+Finally a we ran a linear regression test using inter-arrival times as the dependent variable and service times as the independent variable. Our hypothesis states: There is no association between inter-arrival and service times. A p-value of 0.297 was computed. We can conclude there is weak evidence against our hypothesis. In other words there is little evidence to suggest that inter-arrival and service times are correlated. 
 
 \subsection{Assessment for no association and linkage between overlapping outage events}
 
@@ -449,19 +472,10 @@ This result adds to the wealth of existing studies which support the notion that
 
 This study has answered our second research question: What distribution can be used to model service times of Cloud outage events. DevOps teams can employ the location and scale parameters of their service distribution to compute a mean and standard deviation, which can provide an expected duration service time. With the service times known teams can create schedule plans to determine expected engagement times. Finally this result can be used in conjunction with the result from the previous section to model the idle and busy times of a team as part of a queue modelling exercise.
 
-\subsection{Correlation between inter-arrival and service times}
-
-Using a myriad of tests we have answered our fourth research question: Are inter-arrival and service times correlated? Our results show that there is little evidence to suggest a correlation between inter-arrival and service times.
-
-Figure 3 showed graphically how both variables were correlated not only with themselves but each other. Given the low number of lags crossing the confidence interval coupled with the sparse positioning of these lags, there is little evidence to suggest any meaningful correlation. Likewise we saw similar results from both the Pearson, Spearman, and linear regression tests. 
-
-DevOps team can use this result in a number of ways. An ideal goal for a cloud based business is to have as near to 100\% uptime as possible, while ensuring that when an outage does occur, that the time to service such an outage is as short as possible. In other words having very long inter-arrival times between outage events and very short service times is highly desirable. The goal for each requires a separate solution, in the case of long inter-arrival times ensuring that when a system does fail, it fails gracefully without any loss of service. In the case of service times, having an advanced suite of system monitoring solutions coupled with a simple system of rollback to prior code versions and/or configuration changes is key. 
-
-Given the lack of correlation between inter-arrival and service times, DevOps teams can be confident that process changes to reduce service times will not lead to a reduction in inter-arrival times. Moreover with increased reliability brings longer inter-arrival times, this in essence will not lead to longer service times.
 
 \subsection{Outage event modelling framework}
 
-We asked the question can an effective queuing model be built to simulate outage event traffic? The result from our experiment model shows that a model can be built which is provides a good level of precision compared to observed data.
+We asked the question: How can an effective queuing model be built to simulate outage event traffic? The result from our experiment model shows that a model can be built which is provides a good level of precision compared to observed data.
 
 Table 5 provides a summary of the \% busy and free time for our observed data and for two sets of simulations: G/G/1 and M/M/1 queues. It is unsurprising that M/M/1 lacks precision. There are two factors to consider here. First that neither the inter-arrival nor service distributions could be adequately modelled using an exponential distribution. We recall from Tables 2 and 3 the AD test statistic for the exponential distribution was infinite. For the purposes of the simulation we used the computed means from the Pareto and lognormal distributions. Second the M/M/1 queue assumes that the arrival times between events are independent. We have shown that a small proportion (2\%) of overlapping outage events are linked. These two factors make the M/M/1 queue unsuitable for queue simulation based on the observed data.
 
@@ -498,6 +512,17 @@ Another application of the queue simulation model is to assess staffing requirem
 \end{tabular}
 \end{center}
 \end{table}
+
+
+\subsection{Correlation between inter-arrival and service times}
+
+Using a myriad of tests we have answered our fourth research question: How are inter-arrival and service times correlated? Our results show that there is little evidence to suggest a correlation between inter-arrival and service times.
+
+Figure 3 showed graphically how both variables were correlated not only with themselves but each other. Given the low number of lags crossing the confidence interval coupled with the sparse positioning of these lags, there is little evidence to suggest any meaningful correlation. Likewise we saw similar results from both the Pearson, Spearman, and linear regression tests. 
+
+DevOps team can use this result in a number of ways. An ideal goal for a cloud based business is to have as near to 100\% uptime as possible, while ensuring that when an outage does occur, that the time to service such an outage is as short as possible. In other words having very long inter-arrival times between outage events and very short service times is highly desirable. The goal for each requires a separate solution, in the case of long inter-arrival times ensuring that when a system does fail, it fails gracefully without any loss of service. In the case of service times, having an advanced suite of system monitoring solutions coupled with a simple system of rollback to prior code versions and/or configuration changes is key. 
+
+Given the lack of correlation between inter-arrival and service times, DevOps teams can be confident that process changes to reduce service times will not lead to a reduction in inter-arrival times. Moreover with increased reliability brings longer inter-arrival times, this in essence will not lead to longer service times.
 
 
 \subsection{Assessment for no association and linkage between overlapping outage events}
