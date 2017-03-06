@@ -456,12 +456,12 @@ Prior to a detailed discussion of our results, we summarise the results along wi
 \begin {table*}[]
 \caption {Summary of research questions and results} 
 \begin{flushleft}
-\begin{tabular}{l p{5cm} | l | p{5cm} l} \bf{Research Question} \# & \bf{Results} & \bf{Literature} 
-\\ \hline 1. How are the inter-arrival times of Cloud outage events distributed? & E-mail & Cascade 
-\\ \hline 2. How are the service times of Cloud outage events distributed? & E-mail  & A network 
-\\ \hline 3. How can an effective queuing model be built to simulate outage event traffic? & E-mail  &  A failover 
-\\ \hline 4. How are inter-arrival and service times correlated? & Social & A number
-\\ \hline 5. Are overlapping outage events related or can we treat each event as independent? & E-mail & A temporal 
+\begin{tabular}{| p{6.5cm} | p{5.5cm} | p{5cm} |} \bf{Research Question} \# & \bf{Results} & \bf{Literature} 
+\\ \hline 1. How are the inter-arrival times of Cloud outage events distributed? & Pareto distribution is the best fit. AD test statistic = 0.53, p-value = 0.72  & 
+\\ \hline 2. How are the service times of Cloud outage events distributed? & lognormal distribution is the best fit. AD test statistic = 0.34, p-value = 0.90 & 
+\\ \hline 3. How can an effective queuing model be built to simulate outage event traffic? & Our simulation achieved 72\% precision in predicting queue busy / free times compared to observed data. &  
+\\ \hline 4. How are inter-arrival and service times correlated? & Weak evidence of association between internal-arrival and service times. p-value of 0.297 & 
+\\ \hline 5. Are overlapping outage events related or can we treat each event as independent? & Strong evidence of no association. p-value of less than 0.001  & 
 \\ \hline 
  \end{tabular}
 \end{flushleft}
