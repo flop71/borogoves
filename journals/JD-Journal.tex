@@ -84,6 +84,7 @@ Outage simulation \sep Resource allocation model \sep Queuing theory \sep Cloud 
 \linenumbers
 
 \section{Introduction}
+\label{sec:intro}
 Cloud outage prediction and resolution is an important activity in the management of a Cloud service. Recent media reports have documented cases of Cloud outages from high-profile Cloud service providers \cite{CRN2016outage}. During 2016 alone the CRN website has documented the ten highest profile Cloud outages to have occurred so far.  Due to the increasingly complex nature of data centre infrastructure, coupled with the rapid continuous delivery of incremental software updates, it seems that Cloud outages are with us for the time being.
 
 % Added references for monitoring solutions
@@ -112,9 +113,10 @@ This study aims to answer a number of questions. First, how are the inter-arriva
 
 We are further motivated by recent reports and studies into the adoption of Cloud computing.  Carcary et al.~\cite{carcary2014adoption}, Alshamaila et al.  \cite{alshamaila2013cloud} and Oliveira et al.~\cite{oliveira2014assessing} all conducted studies on Cloud computing adoption by SMEs. The general consensus is that there is no single factor impeding Cloud adoption. The main constraints noted were: Security/compliance/data protection along with geo-restriction and compatibility to legacy systems. It was also noted that manufacturing and services sectors have different concerns in relation to Cloud computing adoption. All of this indicates that some level of customisation is required to meet needs across different industries. Additionally, Gholami et al.~\cite{gholami2016Cloud} provided a detailed review of current Cloud migration processes. One of the main migration concerns mentioned was the unpredictability of a Cloud environment. Factors that led to this unpredictability included: network outages and middleware failures. The study concluded that a fixed migration approach is not possible to cover all migration scenarios due to architecture heterogeneity.
 
-The rest of this article is divided up into the following sections: Section~2 introduces background and related work; Section~3 discusses the dataset collected (and associated study terminology), and outlines the questions that are answered by this study and the limitations of the dataset; Section~4 outlines the experimental approach and associated results; Section~5 discusses the results of our experiments; Finally, in Section~6, we conclude this paper and discuss future work.
+The rest of this article is divided up into the following sections: Section~\ref{sec:background} introduces background and related work; Section~3 discusses the dataset collected (and associated study terminology), and outlines the questions that are answered by this study and the limitations of the dataset; Section~4 outlines the experimental approach and associated results; Section~5 discusses the results of our experiments; Finally, in Section~6, we conclude this paper and discuss future work.
 
 \section{Background and related work}
+\label{sec:background}
 
 The following section provides some background information on two common Cloud services: SaaS and PaaS. We then review high-profile Cloud outages that have made media headlines. Finally this section concludes with a in-depth look at relevant studies in the field of repairable systems modelling, queuing theory and Cloud outage studies.
 
@@ -147,10 +149,11 @@ One of the first Cloud outages to make the headlines was the Amazon outage in Ap
 
 Dropbox experienced two widespread outages during 2013 \cite{Talbot013DBoutage, Etherington2013DBoutage}. During the first, in January, users were unable to connect to the service. It took Dropbox 15 hours to restore a full service. No official explanation as to the nature of the outage was given. The second occurred in May. Again users were unable to connect to the service. This outage lasted a mere 90 minutes. Again, no official explanation was provided.
 
-Table~I provides a summary of high-profile Cloud outages observed up to June 2016\cite{CRN2016outage}. While great improvements have been made in relation to redundancy, disaster recovery and ring fencing of critical services, the big players in Cloud computing are not immune to outages.
+Table~\ref{tab:highprofile} provides a summary of high-profile Cloud outages observed up to June 2016\cite{CRN2016outage}. While great improvements have been made in relation to redundancy, disaster recovery and ring fencing of critical services, the big players in Cloud computing are not immune to outages.
 
 \begin {table*}[]
 \caption {Summary of high-profile Cloud outages in the first half of 2016} 
+\lable{tab:highprofile}
 \begin{flushleft}
 
 \begin{tabular}{l | l | l | p{11.4cm} l} \bf {Company} & \bf {Duration} & \bf {Date} & \bf {Outage Details}  
@@ -204,10 +207,11 @@ Cloud outage studies have been shown to provide an effective way to highlight co
 % added a comment on what resources were modelled.
 Our dataset is taken from an enterprise Cloud system that details all outage events over an eighteen month period. In each case, we had access to the full outage report log. For each outage, we observed the arrival time of each event and how long each outage took to repair. With each arrival time known, the inter-arrival time between each outage was computed. We used the repair time duration as the service time.
 
-A number of points related to the dataset are summarised in Table~2. 
+A number of points related to the dataset are summarised in Table~\ref{tab:dataset}. 
 
 \begin {table*}[]
-\caption {Summary of dataset metrics} 
+\caption {Summary of dataset metrics and factors} 
+\label{tab:dataset}
 \begin{center}
 \begin{tabular}{p{4cm} |  p{11cm}} \hline \bf{Metric} & \bf{Value}
 \\ \hline Number of outage events & 331 
@@ -324,12 +328,12 @@ The results of the study are now discussed. This section shall follow the same f
 \begin{figure*}[]
 \begin{center}
 \includegraphics[width=18cm, height=10.5cm]{inter_arrival_pareto.pdf} 
-\caption{Density, CDF, P-P and Q-Q plots for a fitted Pareto Distribution against inter-arrival time data}
 \end{center}
+\caption{Density, CDF, P-P and Q-Q plots for a fitted Pareto Distribution against inter-arrival time data}
 \label{fig:outagedistribution}
 \end{figure*}
 
-Table~3 shows a summary of the seven distributions fitted against the observed inter-arrival time data. Each distribution is listed along with its corresponding Anderson Darling test statistic and p-value. Fig.~1 shows four goodness-of-fit plots for a fitted Pareto distribution: Density, Cumulative Distribution Function (CDF), Probability (P-P) \cite{gibbons2011nonparametric}  and Quantile (Q-Q) \cite{wilk1968probability}.  
+Table~3 shows a summary of the seven distributions fitted against the observed inter-arrival time data. Each distribution is listed along with its corresponding Anderson Darling test statistic and p-value. Fig.~\ref{fig:outagedistribution} shows four goodness-of-fit plots for a fitted Pareto distribution: Density, Cumulative Distribution Function (CDF), Probability (P-P) \cite{gibbons2011nonparametric}  and Quantile (Q-Q) \cite{wilk1968probability}.  
 
 
 To answer the question of how the inter-arrival times of Cloud outage events are distributed, seven continuous distributions were fitted against the dataset. To test the goodness of fit, an Anderson-Darling (AD) goodness-of-fit test was conducted against each probability distribution. 
