@@ -18,7 +18,7 @@ double exp_arrival(void);
 double exp_service(void);
 
 int main(void) {
-int len, arrivals, x;
+int len, arrivals;
 double next_arrival, next_departure, now;
 
 
@@ -48,7 +48,7 @@ printf("time\tlen\n");
 			next_departure = -1;
 			}
 		}
-		printf("\%f\t\%d\n", now, len);
+		printf("%f\t%d\n", now, len);
 	}
 
 	return 0;
@@ -74,11 +74,8 @@ double pareto_arrival(void) {
 
 double lognormal_service (void) {
 
-    int i;
-
     float m;    //Mean parameter
     float s;    //stdev parameter
-    float v;    //variance parameter
     float x1, x2, w, y1;
     static float y2;
     static int use_last = 0;
