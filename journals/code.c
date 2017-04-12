@@ -53,10 +53,10 @@ int main(void) {
 }
 
 double pareto_arrival(void) {
-	float a;
-	float b;
-	float inv_fun_denom;
-	float par_arr;
+	double a;
+	double b;
+	double inv_fun_denom;
+	double par_arr;
 
 	a =  4; // dummy shape parameter
 	b = 9000; // dummy scale parameter
@@ -69,13 +69,13 @@ double pareto_arrival(void) {
 
 
 double lognormal_service (void) {
-	float m;	//Mean parameter
-	float s;	//stdev parameter
-	float x1, x2, w, y1;
-	static float y2;
+	double m;	//Mean parameter
+	double s;	//stdev parameter
+	double x1, x2, w, y1;
+	static double y2;
 	static int use_last = 0;
-	float normal_result;
-	float lnormal_result;
+	double normal_result;
+	double lnormal_result;
 
 
 	// dummy mean log and sd log
