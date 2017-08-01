@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Different_Every_Time.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: different.bib
+Warning--entry type for "WatWork" isn't style-file defined
+--line 22 of file different.bib
+Warning--entry type for "Slack" isn't style-file defined
+--line 29 of file different.bib
+Warning--entry type for "MSTeams" isn't style-file defined
+--line 36 of file different.bib
+Warning--entry type for "Azendo" isn't style-file defined
+--line 43 of file different.bib
+Warning--entry type for "emailclutter" isn't style-file defined
+--line 50 of file different.bib
+Warning--entry type for "emailparal" isn't style-file defined
+--line 57 of file different.bib
+Warning--entry type for "devslack" isn't style-file defined
+--line 64 of file different.bib
+Warning--entry type for "devopsslack" isn't style-file defined
+--line 71 of file different.bib
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 43 entries,
+            4039 wiz_defined-function locations,
+            1042 strings with 12408 characters,
+and the built_in function-call counts, 24744 in all, are:
+= -- 2061
+> -- 383
+< -- 198
++ -- 226
+- -- 54
+* -- 1059
+:= -- 3982
+add.period$ -- 86
+call.type$ -- 43
+change.case$ -- 40
+chr.to.int$ -- 444
+cite$ -- 43
+duplicate$ -- 1838
+empty$ -- 2097
+format.name$ -- 67
+if$ -- 5600
+int.to.chr$ -- 0
+int.to.str$ -- 43
+missing$ -- 320
+newline$ -- 190
+num.names$ -- 35
+pop$ -- 802
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 1964
+stack$ -- 0
+substring$ -- 1070
+swap$ -- 1402
+text.length$ -- 50
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 43
+warning$ -- 0
+while$ -- 112
+width$ -- 45
+write$ -- 439
+(There were 8 warnings)
