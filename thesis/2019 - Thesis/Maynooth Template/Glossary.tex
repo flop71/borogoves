@@ -1,0 +1,28 @@
+% content in this file will be fed into the main document
+
+% Glossary entries are defined with the command \nomenclature{1}{2}
+% 1 = Entry name, e.g. abbreviation; 2 = Explanation
+% You can place all explanations in this separate file or declare them in the middle of the text. Either way they will be collected in the glossary.
+
+% required to print nomenclature name to page header
+%\markboth{\MakeUppercase{\nomname}}{\MakeUppercase{\nomname}}
+
+
+% ----------------------- contents from here ------------------------
+\chapter{Glossary}
+
+%\addnotation $\alpha$: {some variable that means something to me}{alpha}
+\begin{longtable}{ p{4cm} p{0.7\linewidth}}
+\textbf{Term} & \textbf{Meaning}  \\ 
+\\
+
+Continuous delivery & Continuous Delivery is the ability to get changes of all types -- including new features, configuration changes, bug fixes and experiments -- into production, or into the hands of users, safely and quickly in a sustainable way\cite{humble2010continuous}.\\
+SME & A small enterprise is an enterprise that has fewer than 50 employees and has either an annual turnover and/or an annual Balance Sheet total not exceeding ¤10m. A medium enterprise is an enterprise that has between 50 employees and 249 employees and has either an annual turnover not exceeding ¤50m or an annual Balance Sheet total not exceeding ¤43m \cite{SMEdefine}.\\
+Micro team & ** Need to find a definition from a book ** \\
+Startup & An organisation formed to search for a repeatable and scalable business model\cite{croll2013lean}.\\
+Functional Testing & Testing which is focused on the specified functional requirements and does not verify the interactions of system functions\cite{ieee1998ieee}.\\
+System Testing & Testing conducted on a complete integrated system to evaluate the system's compliance with its specified requirements.  System test, unlike Functional testing, validates end-to-end system operations within the wider environmental context. Therefore system testing should be conducted on an environment, which closely mimic's customer behaviour\cite{ieee1998ieee}.\\
+Performance Testing & In software engineering Performance testing is performed to determine how a system performs in terms of responsiveness and stability under a particular workload\cite{ieee1998ieee}..\\
+Field defects &  Refers to all defects found by customers using the software product post-release\cite{ieee1998ieee}.. \\
+\end{longtable}
+\newpage

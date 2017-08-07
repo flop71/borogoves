@@ -1,0 +1,101 @@
+
+\documentclass[12pt,a4paper,oneside,openright]{memoir}
+
+%==========PREAMBLE=======================================================
+\usepackage{Thesis} % more suitable for reading as an ebook
+\usepackage{algorithm,algorithmic}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{array}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{breakurl}
+
+\newcommand{\toclesschapter}[1]{\chapter*{#1}\addtocounter{chapter}{1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\interfootnotelinepenalty=10000
+\hypersetup{colorlinks=true,breaklinks=true,urlcolor=blue}
+
+\lstdefinestyle{customcs}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=single,
+  xleftmargin=\parindent,
+  aboveskip=5pt,
+  basicstyle=\tiny\ttfamily,
+}
+
+%==========DOCUMENT=======================================================
+\begin{document}
+{
+
+%-------------------------------------------------------------------------
+%--- TITLE PAGE
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=10cm]{images/logo.eps} \\
+\vspace*{10mm}
+{ \Large \scshape {\bfseries Endless Data: A handbook to make sense of test, outage and collaboration data for SMEs and micro teams}}\\
+\end{center}
+
+\begin{center}
+A dissertation submitted for the degree of \\
+Doctor of Philosophy\\
+\vspace*{14mm}
+By:\\
+{\Large \textbf{Jonathan Dunne\\}}
+\vspace*{18mm}
+Under the supervision of: \\
+{\large {Dr David Malone}\\}
+\vspace*{15mm}
+Hamilton Institute\\
+Maynooth University\\
+Ollscoil na h\'{E}ireann, M\'{a} Nuad\\
+\vspace*{8mm}
+ {31st December 2018}
+\end{center}
+
+%--- END OF TITLE PAGE
+%-----------------------------------------------------%--------------------
+
+
+%%==========================================================================
+%% ----------------------- subdocuments ------------------------
+%--- FRONT MATTER
+\frontmatter
+
+\include{Dedication}
+
+\begin{KeepFromToc}
+ \tableofcontents
+ \newpage
+
+ \listoftables
+ \newpage
+\end{KeepFromToc}
+
+\include{Declaration}
+\include{Acknowledgement}
+\include{Abstract}
+\include{Glossary}
+\cleardoublepage
+
+%%==========================================================================
+%--- MAIN MATTER
+\mainmatter
+\input{Chapter_Introduction}
+\input{Chapter_Social_Testing}
+\input{Chapter_Outage_Modelling}
+\input{Chapter_Outage_Simulation}
+\input{Chapter_Chat_Discourse_Modelling}
+\input{Chapter_Chat_Discourse_Segmentation}
+\input{Chapter_Conclusions}
+
+%%==========================================================================
+%--- BIBLIOGRAPHY
+\bibliographystyle{plain}
+\bibliography{references_final}{}
+\end{document}

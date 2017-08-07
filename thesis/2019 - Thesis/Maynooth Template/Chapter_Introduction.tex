@@ -1,0 +1,112 @@
+
+% this file is called up by thesis.tex
+% content in this file will be fed into the main document
+
+%: ----------------------- introduction file header -----------------------
+\chapter{Introduction}\label{ch:intro}
+
+\begin{textsl}
+{\small In this chapter, we discuss the motivations behind the work of this thesis and provide an overview
+of the material presented in the following chapters.}
+\end{textsl}
+
+\vspace*{1cm}
+
+% ----------------------------------------------------------------------
+%: ----------------------- introduction content ----------------------- 
+% ----------------------------------------------------------------------
+\section{Motivation}
+
+Delivering software for the Cloud represents a challenge for both micro teams, Small Medium Enterprises (SMEs) and startups, in part due to the rapid release methods adopted and the numerous ways in which software defects can be detected. One of the these delivery methods is known as continuous delivery (CD). 
+
+Likewise as applications are hosted within a Cloud based infrastructure, production outages (critical software defects) can occur in a variety of ways due to the complex nature of distributed computing.
+
+Furthermore as small teams adopt real-time collaborative instant messaging solutions to collaborate on defect remediation, making sense of this data can be a challenge to teams, given the lack of inbuilt analytical tooling.
+
+We extend previous work by studying field defect, production outage events and real-time collaboration data. Through empirical research on a myriad of enterprise and open-source datasets, we provide a series of frameworks that can be used to turn endless streams of data into high value information.
+
+\section{Overview}
+This thesis is divided into the following chapters:
+
+\textbf{Chapter 1: Introduction}
+
+This introductory chapter and broad discussion of the background literature that in part motivates this proposed work.
+
+\textbf{Chapter 2: Social testing}
+
+This chapter presents two studies of software testing conducted as part of the release of a Cloud based enterprise application. The concept of social testing is introduced, and we demonstrate how this idea can be used to reduce field defects.
+
+\textbf{Chapter 3: Outage modelling}
+
+This chapter discloses details of a study conducted into Cloud outages,using an enterprise dataset. Both outage inter-arrival and services are modelled.
+
+\textbf{Chapter 4: Outage simulation}
+In this chapter we take the inter-arrival and service times from our Cloud outage study and simulate the arrival of future outages events. From this simulation staffing requirements to manage such events can be inferred. 
+
+\textbf{Chapter 5: Chat discourse modelling}
+
+This chapter presents a framework that can be used to model real-time chat discourse using both parametric and non-parametric methods.
+
+\textbf{Chapter 6: Chat discourse segmentation and topic modelling}
+
+This chapter demonstrates how text classifiers framework to identify chat conversation boundaries. This chapter also presents a study on how topic models can provide high level inference. 
+
+\textbf{Chapter 7: Conclusions}
+
+This last chapter summarises the key findings and learning outcomes.
+
+\section{Publications} 
+
+\subsection{Continuous Delivery}
+CD is an approach to software development that allows software companies to develop, test and release software in short, discrete delivery cycles. Releasing software with a low number of changes allows the rapid validation and release of a software product. CD Employs two methodologies; continuous test automation (CA) ---  the practice of employing an automated test script to validate delivered code and continuous integration (CI) --- the practice of merging developer streams into a consolidated mainline, which allows software to be developed and tested to a high standard (due to the low level of code churn), and facilitates a swift release cycle. CD is used as part of a new wave of development, test, deployment and release strategies for Cloud based software services. Key evangelists for CD include Facebook, Google and Netflix \cite{quora2014}. 
+
+\subsection{Bug Bounty Programs}
+A bug bounty program is a scheme whereby software companies offer a reward to users that find defects within their software. The benefit to software companies is that it incentivises users to find defects (typically security vulnerabilities) before they are exploited by the general user base \cite{wiki2015bugbounty}. The \emph{bugcrowd} website contains a list of current bug bounties offered by software companies.  Currently 116 companies are listed as having some form of reward and/or gift system for user found vulnerabilities \cite{bugcrowd2015}. Bug bounty schemes are not limited to start-up companies or open source projects.  Some high profile software companies which participate in bug bounty schemes include Facebook, Google and Microsoft. \par
+
+Recently there have been a number of famous bug bounties. For example Donald Knuth a computer scientist and creator of the TeX computer system \cite{Knuth2015}, devised a bug bounty program (Knuth reward checks) where the reward doubled every year in value to a maximum of  \$327.68 in the form of a cashier's check. A second well-known bounty is related to D.J. Bernstein who is a cryptologist and programmer of qmail \cite{Bernstein2015}. In 1997 he offered \$500 to the first individual who could publish details of security exploits within his latest release of qmail. To date no one has found any vulnerability.
+
+\subsection{Eating your own dogfood}
+
+Eating your own dogfood is a term given to the internal usage of a software product prior to release to the customer. The idea is that regular internal usage will improve overall software quality. 
+
+Warren Harrison \cite{harrison2006eating} the then editor in chief of IEEE Software, mentions that Microsoft were one of the first companies to aggressively adopt the practice of ``Eating your own dogfood'' when developing their Windows platform in the early 1990's. Harrison also discusses the pros and cons of adopting a dog food approach to internal testing.
+
+Adam Moskowitz \cite{moskowitz2003eat} discussed the idea of dog fooding in the magazine ``;login:''.  In the realm of system administration, Moskowitz provides some practical examples of how increased internal testing can help improve shell scripting and tooling.
+
+Schmidt and Varian \cite{schmidt2005google}, in a Newsweek article, outlined ten rules, which they believe will drive success within Google over the next quarter of a century. They attribute the success of Gmail to the fact that it was extensively tested by the majority of Google employees over a several month period.
+
+Prli\'c and Procter \cite{prlic2012ten} in a Public Library of Science computer biology journal, also outline ten rules from the open development of scientific software. Rule three mentions how software in development should be useful as an end product and not simply to demonstrate a solution. In other words the software should be consumable by customers with a broad range of backgrounds rather than a specific cohort.
+
+Jackson and Winn \cite{jackson2012eating} conducted research in the field of research data management platforms. In building a large complex platform with many API endpoints, they cite internal usage of the in-development platform coupled with adoption of agile practices such as `Continuous Integration'\cite{wikiCI} as key methods in defect detection.
+
+
+\subsection{Crowdsourced testing}
+
+Crowdsourcing is the act of taking a job traditionally performed by a designated agent (usually an employee) and outsourcing it to an undefined, generally large group of people in the form of an open call\cite{crowdsourcedef}.
+
+Nebling et al. \cite{nebeling2012crowdsourced} presents a study of Crowdstudy, a toolkit for crowdsourced testing of web pages. By crowdsourcing numerous individuals, data was collected on how users habits differed when engaging with a web site. 
+
+Vukovic \cite{Vukovic2009crowdsourcing} conduced a study of crowdsourcing services for the Cloud. While Amazon's Mechanical Turk and Innocentive appear to have the most supported features, most of the frameworks fall short in facilitating the dynamic formation of globally distributed teams. 
+
+Liu et al. \cite{liu2012crowdsourcing} conducted a study into the use of crowdsourcing for usability testing compared to traditional face-to-face methods. Their study found the quality of results from crowdsourcing were not as good as those face-to-face testing. However crowdsourcing still represents value for design/development teams with limited time and money.
+
+Zogaj et al. \cite{zogaj2014managing} present a case study with a crowdsourcing company who specialise in outsourcing software testing to specific groups. Their research found that there were three key challenges: managing the process, managing the crowd and managing the technology. By using an intermediary to manage all aspects of the process from procurement of individuals, monitoring of test progress to addressing technology skill gaps ensured a smooth end to end process. 
+
+
+\subsection{Studies related to defect detection}
+A number of studies have been conducted on customer reported defects. None of the software studied were developed using a CD  release model. \par
+
+Brooks and Robinson \cite{brooks2009initial} performed a study on customer reported GUI defects found on two industrial software systems. Their work focused on the impact, location and resolution times of customer defects. Their study compared these factors from both in-house and customer defects. They found that in-house testers and customers found the same types of defects. 60\% of the total defects found were in the GUI while the remaining 40\% were application defects. Finally, that customers had to wait 170 days for defects to be fixed. \par
+
+Moritz \cite{moritz2009case} conducted a study of customer defects raised within a large industrial telecommunications software component. Her work focused on analysis of customer defects found over a 10-year period with a goal of understanding how to improve future test quality. She reviewed whether defect regression, test phase, new functionality, load testing and environment were factors in a customer defect being raised. Her study found first, that the in-house system test environments and test use cases did not accurately match customer configurations or usage conditions. Second, that regression testing was inadequate, tests plans typically focused on new features,  which left test exposures within legacy components. Finally, existing test methods were not suitable in finding customer defects. \par
+
+ Gittens et al. \cite{gittens2002empirical} studied the efficiency of in house software testing by investigating the scope and coverage of system and regression testing. They examined a number of factors, such as number of defects found in-house, by the customer and code coverage. Firstly with test coverage in the range of 71 -- 80\% fewer customer defects are found. Secondly that in-house tests coverage does not always overlap with customer usage areas. Thus there is a gap between in-house and customer product usage. Finally that greater in-house test coverage does not automatically translate into fewer customer defects found. The authors demonstrated that test coverage needs to be specifically targeted to reduce field defects. \par
+ 
+Musa \cite{musa1996software} developed a technique for Software Reliability Engineered Testing (SRET), which was implemented on the \emph{Fone Follower} project at AT\&T. Musa used a SRET method to classify defects found into four levels of severity based on their impact to the end user. Defect severity rates from prior regression testing were then used to guide future test coverage. \par
+
+Sullivan and Chillarege \cite{sullivan1992comparison} compared the types of customer defects found in Database Systems (DBS) and Operating Systems (OS). Their study looked at a number of factors including; error type, trigger and defect type. They had a number of key findings. Firstly they found that legacy DBS and OS had a similar number of high severity defects. Secondly, that newer DBS had a higher rate of high severity defects. \par
+
+Adams \cite{adams1984optimizing} conducted a study of customer defects from nine products over a five-year period. He found that customer defects were typically discovered shortly after the product was released. He surmised that these defects would have taken many person months to find had they been tested on a single machine. He concluded that these customer defects would have been very difficult to find using existing test methods. \par
+
+Riungu et al. \cite{riungu2010research} performed research into the challenges Cloud computing presents to software testing. One concern raised was the human effort to test software with 24/7 availability. Automation aside, they mentioned the need for some level of manual testing to be conducted round the clock---an idea not easily implemented by SMEs.
+
