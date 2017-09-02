@@ -35,7 +35,7 @@ K.~Wolf. (2017) 8 business problems the best collaboration software can solve.
 
 \bibitem{slackSME}
 \BIBentryALTinterwordspacing
-M.~Haughey. (2017) Setting up slack for small teams. [Online]. Available:
+M.~Haughey. (2017) Setting up {S}lack for small teams. [Online]. Available:
   \url{http://bit.ly/2vzw81Q}
 \BIBentrySTDinterwordspacing
 
@@ -61,8 +61,8 @@ M.~Haughey. (2017) Setting up slack for small teams. [Online]. Available:
 
 \bibitem{emailclutter}
 \BIBentryALTinterwordspacing
-C.~A. Sottile, ``Sick of email? slack wants to kill your inbox clutter,'' 2017.
-  [Online]. Available: \url{http://nbcnews.to/2uyzLYR}
+C.~A. Sottile, ``Sick of email? {S}lack wants to kill your inbox clutter,''
+  2017. [Online]. Available: \url{http://nbcnews.to/2uyzLYR}
 \BIBentrySTDinterwordspacing
 
 \bibitem{emailparal}
@@ -73,13 +73,13 @@ C.~Fowler, ``How to avoid email paralysis,'' 2017. [Online]. Available:
 
 \bibitem{devslack}
 \BIBentryALTinterwordspacing
-``How the engineering team at ibm uses slack throughout the development
+``How the engineering team at {IBM} uses slack throughout the development
   lifecycle,'' 2017. [Online]. Available: \url{http://bit.ly/2qcd07G}
 \BIBentrySTDinterwordspacing
 
 \bibitem{devopsslack}
 \BIBentryALTinterwordspacing
-C.~Boulton, ``How devops, agile spurred slack enterprise adoption,'' 2017.
+C.~Boulton, ``How devops, agile spurred {S}lack enterprise adoption,'' 2017.
   [Online]. Available: \url{http://bit.ly/2kTMHB8}
 \BIBentrySTDinterwordspacing
 
@@ -121,7 +121,7 @@ T.~W. Anderson and D.~A. Darling, ``A test of goodness of fit,'' \emph{Journal
   1954.
 
 \bibitem{anderson1952asymptotic}
-------, ``Asymptotic theory of certain" goodness of fit" criteria based on
+------, ``Asymptotic theory of certain ``goodness of fit" criteria based on
   stochastic processes,'' \emph{The annals of mathematical statistics}, pp.
   193--212, 1952.
 
@@ -132,7 +132,7 @@ B.~M. Hill \emph{et~al.}, ``A simple general approach to inference about the
 
 \bibitem{pickands1975statistical}
 J.~Pickands~III, ``Statistical inference using extreme order statistics,''
-  \emph{the Annals of Statistics}, pp. 119--131, 1975.
+  \emph{The Annals of Statistics}, pp. 119--131, 1975.
 
 \bibitem{nair2013fundamentals}
 J.~Nair, A.~Wierman, and B.~Zwart, ``The fundamentals of heavy-tails:
@@ -169,13 +169,13 @@ S.~J. Sheather and M.~C. Jones, ``A reliable data-based bandwidth selection
   Statistical Society. Series B (Methodological)}, pp. 683--690, 1991.
 
 \bibitem{dewes2003analysis}
-C.~Dewes, A.~Wichmann, and A.~Feldmann, ``An analysis of internet chat
+C.~Dewes, A.~Wichmann, and A.~Feldmann, ``An analysis of {I}nternet chat
   systems,'' in \emph{Proceedings of the 3rd ACM SIGCOMM conference on Internet
   measurement}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2003, pp. 51--64.
 
 \bibitem{lukasik2015modeling}
 M.~Lukasik, P.~Srijith, T.~Cohn, and K.~Bontcheva, ``Modeling tweet arrival
-  times using log-gaussian cox processes.'' in \emph{EMNLP}, 2015, pp.
+  times using log-gaussian {C}ox processes.'' in \emph{EMNLP}, 2015, pp.
   250--255.
 
 \bibitem{vande2015markov}
@@ -198,6 +198,12 @@ R.~E. Maiboroda and N.~M. Markovich, ``Estimation of heavy-tailed probability
 (2017) Visualizing inter-arrival times of tweets. [Online]. Available:
   \url{http://bit.ly/2tm8AMeHP}
 \BIBentrySTDinterwordspacing
+
+\bibitem{burnap2014tweeting}
+P.~Burnap, M.~L. Williams, L.~Sloan, O.~Rana, W.~Housley, A.~Edwards,
+  V.~Knight, R.~Procter, and A.~Voss, ``Tweeting the terror: modelling the
+  social media reaction to the woolwich terrorist attack,'' \emph{Social
+  Network Analysis and Mining}, vol.~4, no.~1, p. 206, 2014.
 
 \bibitem{irclogs}
 \BIBentryALTinterwordspacing
@@ -240,7 +246,7 @@ A.~Z. Christian~Kleiber. R package aer. [Online]. Available:
 
 \bibitem{poissoncount}
 \BIBentryALTinterwordspacing
-W.~A. Huber. What to do when count data does not fit a poisson distribution.
+W.~A. Huber. What to do when count data does not fit a {P}oisson distribution.
   [Online]. Available: \url{http://bit.ly/2uHCkIx}
 \BIBentrySTDinterwordspacing
 

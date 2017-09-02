@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.7)  1 AUG 2017 09:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.7)  2 SEP 2017 11:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -406,38 +406,38 @@ e
 [2]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 117.
+               Default added (so using `tbp') on input line 119.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 121.
+LaTeX Font Info:    Try loading font information for U+msa on input line 123.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 121.
+LaTeX Font Info:    Try loading font information for U+msb on input line 123.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
 []\OT1/ptm/b/n/7 Duration
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
 []\OT1/ptm/b/n/7 Conversations
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
 []\OT1/ptm/b/n/7 No. En-tan-gled
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
 []\OT1/ptm/b/n/7 Entangled
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--123
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
 []\OT1/ptm/m/n/7 Enterprise In-stant
  []
 
@@ -445,59 +445,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--123
 File: 01_duration_enterprise.pdf Graphic file (type pdf)
 
 <use 01_duration_enterprise.pdf>
-Package pdftex.def Info: 01_duration_enterprise.pdf used on input line 203.
-(pdftex.def)             Requested size: 256.08183pt x 256.07538pt.
+Package pdftex.def Info: 01_duration_enterprise.pdf used on input line 199.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 203--204
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 199--200
  [] 
  []
 
-./Different_Every_Time.tex:210: Misplaced alignment tab character &.
-l.210 ...e removed from the dataset. Both a Burr &
-                                                   log-logistic distribution...
-
-? s
-OK, entering \scrollmode...
 <02_duration_ubuntu.pdf, id=20, 844.15375pt x 597.23125pt>
 File: 02_duration_ubuntu.pdf Graphic file (type pdf)
 
 <use 02_duration_ubuntu.pdf>
-Package pdftex.def Info: 02_duration_ubuntu.pdf used on input line 214.
-(pdftex.def)             Requested size: 256.08183pt x 256.07538pt.
+Package pdftex.def Info: 02_duration_ubuntu.pdf used on input line 210.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 214--215
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 210--211
  [] 
  []
 
-./Different_Every_Time.tex:215: Misplaced alignment tab character &.
+./Different_Every_Time.tex:211: Misplaced alignment tab character &.
 <argument> ...ersation duration with fitted Burr &
                                                    loglogistic curve
-l.215 ...ion with fitted Burr & loglogistic curve}
+l.211 ...ion with fitted Burr & loglogistic curve}
                                                   
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
+? s
+OK, entering \scrollmode...
 <03_delta_logical_enterprise.pdf, id=21, 844.15375pt x 597.23125pt>
 File: 03_delta_logical_enterprise.pdf Graphic file (type pdf)
 
 <use 03_delta_logical_enterprise.pdf>
-Package pdftex.def Info: 03_delta_logical_enterprise.pdf used on input line 229
+Package pdftex.def Info: 03_delta_logical_enterprise.pdf used on input line 225
 .
-(pdftex.def)             Requested size: 241.84863pt x 256.07538pt.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
+
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 225--226
+ [] 
+ []
 
 <04_delta_entangled_enterprise.pdf, id=22, 844.15375pt x 597.23125pt>
 File: 04_delta_entangled_enterprise.pdf Graphic file (type pdf)
 
 <use 04_delta_entangled_enterprise.pdf>
 Package pdftex.def Info: 04_delta_entangled_enterprise.pdf used on input line 2
-37.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
+33.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 237--238
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 233--234
  [] 
  []
 
@@ -505,17 +498,17 @@ Overfull \hbox (3.03197pt too wide) in paragraph at lines 237--238
 File: 05_delta_kde_enterprise.pdf Graphic file (type pdf)
 
 <use 05_delta_kde_enterprise.pdf>
-Package pdftex.def Info: 05_delta_kde_enterprise.pdf used on input line 247.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
+Package pdftex.def Info: 05_delta_kde_enterprise.pdf used on input line 243.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 247--248
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 243--244
  [] 
  []
 
-./Different_Every_Time.tex:248: Undefined control sequence.
+./Different_Every_Time.tex:244: Undefined control sequence.
 <argument> ...d uniform (rectangular) kernel & \n 
                                                   SJ-DPI bandwidth selection...
-l.248 ...el & \n SJ-DPI bandwidth selection curve}
+l.244 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -523,10 +516,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Different_Every_Time.tex:248: Misplaced alignment tab character &.
+./Different_Every_Time.tex:244: Misplaced alignment tab character &.
 <argument> ...itted uniform (rectangular) kernel &
                                                    \n SJ-DPI bandwidth selec...
-l.248 ...el & \n SJ-DPI bandwidth selection curve}
+l.244 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -535,10 +528,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-./Different_Every_Time.tex:248: Undefined control sequence.
+./Different_Every_Time.tex:244: Undefined control sequence.
 <argument> ...d uniform (rectangular) kernel & \n 
                                                   SJ-DPI bandwidth selection...
-l.248 ...el & \n SJ-DPI bandwidth selection curve}
+l.244 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -546,10 +539,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Different_Every_Time.tex:248: Misplaced alignment tab character &.
+./Different_Every_Time.tex:244: Misplaced alignment tab character &.
 <argument> ...itted uniform (rectangular) kernel &
                                                    \n SJ-DPI bandwidth selec...
-l.248 ...el & \n SJ-DPI bandwidth selection curve}
+l.244 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -558,10 +551,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-./Different_Every_Time.tex:248: Undefined control sequence.
+./Different_Every_Time.tex:244: Undefined control sequence.
 <argument> ...d uniform (rectangular) kernel & \n 
                                                   SJ-DPI bandwidth selection...
-l.248 ...el & \n SJ-DPI bandwidth selection curve}
+l.244 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -573,10 +566,10 @@ and I'll forget about whatever was undefined.
 File: 06_delta_logical_ubuntu.pdf Graphic file (type pdf)
 
 <use 06_delta_logical_ubuntu.pdf>
-Package pdftex.def Info: 06_delta_logical_ubuntu.pdf used on input line 257.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
+Package pdftex.def Info: 06_delta_logical_ubuntu.pdf used on input line 253.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 257--258
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 253--254
  [] 
  []
 
@@ -584,31 +577,29 @@ Overfull \hbox (3.03197pt too wide) in paragraph at lines 257--258
 File: 07_delta_entangled_ubuntu.pdf Graphic file (type pdf)
 
 <use 07_delta_entangled_ubuntu.pdf>
-Package pdftex.def Info: 07_delta_entangled_ubuntu.pdf used on input line 265.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
+Package pdftex.def Info: 07_delta_entangled_ubuntu.pdf used on input line 261.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 265--266
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 261--262
  [] 
  []
 
-[5 <./01_duration_enterprise.pdf> <./02_duration_ubuntu.pdf>] [6 <./03_delta_lo
-gical_enterprise.pdf> <./04_delta_entangled_enterprise.pdf> <./05_delta_kde_ent
-erprise.pdf> <./06_delta_logical_ubuntu.pdf>]
-<08_delta_kde_ubuntu.pdf, id=68, 844.15375pt x 597.23125pt>
+[5 <./01_duration_enterprise.pdf> <./02_duration_ubuntu.pdf>]
+<08_delta_kde_ubuntu.pdf, id=42, 844.15375pt x 597.23125pt>
 File: 08_delta_kde_ubuntu.pdf Graphic file (type pdf)
 
 <use 08_delta_kde_ubuntu.pdf>
-Package pdftex.def Info: 08_delta_kde_ubuntu.pdf used on input line 275.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
+Package pdftex.def Info: 08_delta_kde_ubuntu.pdf used on input line 271.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 275--276
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 271--272
  [] 
  []
 
-./Different_Every_Time.tex:276: Undefined control sequence.
+./Different_Every_Time.tex:272: Undefined control sequence.
 <argument> ...d uniform (rectangular) kernel & \n 
                                                   SJ-DPI bandwidth selection...
-l.276 ...el & \n SJ-DPI bandwidth selection curve}
+l.272 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -616,10 +607,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Different_Every_Time.tex:276: Misplaced alignment tab character &.
+./Different_Every_Time.tex:272: Misplaced alignment tab character &.
 <argument> ...itted uniform (rectangular) kernel &
                                                    \n SJ-DPI bandwidth selec...
-l.276 ...el & \n SJ-DPI bandwidth selection curve}
+l.272 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -628,10 +619,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-./Different_Every_Time.tex:276: Undefined control sequence.
+./Different_Every_Time.tex:272: Undefined control sequence.
 <argument> ...d uniform (rectangular) kernel & \n 
                                                   SJ-DPI bandwidth selection...
-l.276 ...el & \n SJ-DPI bandwidth selection curve}
+l.272 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -639,10 +630,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Different_Every_Time.tex:276: Misplaced alignment tab character &.
+./Different_Every_Time.tex:272: Misplaced alignment tab character &.
 <argument> ...itted uniform (rectangular) kernel &
                                                    \n SJ-DPI bandwidth selec...
-l.276 ...el & \n SJ-DPI bandwidth selection curve}
+l.272 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -651,10 +642,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-./Different_Every_Time.tex:276: Undefined control sequence.
+./Different_Every_Time.tex:272: Undefined control sequence.
 <argument> ...d uniform (rectangular) kernel & \n 
                                                   SJ-DPI bandwidth selection...
-l.276 ...el & \n SJ-DPI bandwidth selection curve}
+l.272 ...el & \n SJ-DPI bandwidth selection curve}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -662,114 +653,128 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-<09_interarrival_enterprise.pdf, id=69, 844.15375pt x 597.23125pt>
+<09_interarrival_enterprise.pdf, id=43, 844.15375pt x 597.23125pt>
 File: 09_interarrival_enterprise.pdf Graphic file (type pdf)
 
 <use 09_interarrival_enterprise.pdf>
-Package pdftex.def Info: 09_interarrival_enterprise.pdf used on input line 288.
+Package pdftex.def Info: 09_interarrival_enterprise.pdf used on input line 284.
 
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 288--289
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 284--285
  [] 
  []
 
-<10_interarrival_ubuntu.pdf, id=70, 844.15375pt x 597.23125pt>
+<10_interarrival_ubuntu.pdf, id=44, 844.15375pt x 597.23125pt>
 File: 10_interarrival_ubuntu.pdf Graphic file (type pdf)
 
 <use 10_interarrival_ubuntu.pdf>
-Package pdftex.def Info: 10_interarrival_ubuntu.pdf used on input line 299.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
+Package pdftex.def Info: 10_interarrival_ubuntu.pdf used on input line 295.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
 
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 299--300
- [] 
- []
-
-
-Underfull \vbox (badness 5161) has occurred while \output is active []
-
- [7 <./07_delta_entangled_ubuntu.pdf> <./08_delta_kde_ubuntu.pdf> <./09_interar
-rival_enterprise.pdf> <./10_interarrival_ubuntu.pdf>]
-<11_messages_enterprise.pdf, id=99, 844.15375pt x 597.23125pt>
-File: 11_messages_enterprise.pdf Graphic file (type pdf)
-
-<use 11_messages_enterprise.pdf>
-Package pdftex.def Info: 11_messages_enterprise.pdf used on input line 312.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
-
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 312--313
- [] 
- []
-
-<12_words_enterprise.pdf, id=100, 844.15375pt x 597.23125pt>
-File: 12_words_enterprise.pdf Graphic file (type pdf)
-
-<use 12_words_enterprise.pdf>
-Package pdftex.def Info: 12_words_enterprise.pdf used on input line 320.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
-
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 320--321
- [] 
- []
-
-<13_messages_ubuntu.pdf, id=101, 844.15375pt x 597.23125pt>
-File: 13_messages_ubuntu.pdf Graphic file (type pdf)
-
-<use 13_messages_ubuntu.pdf>
-Package pdftex.def Info: 13_messages_ubuntu.pdf used on input line 331.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
-
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 331--332
- [] 
- []
-
-<14_words_ubuntu.pdf, id=102, 844.15375pt x 597.23125pt>
-File: 14_words_ubuntu.pdf Graphic file (type pdf)
-
-<use 14_words_ubuntu.pdf>
-Package pdftex.def Info: 14_words_ubuntu.pdf used on input line 339.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
-
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 339--340
- [] 
- []
-
-<15_users_enterprise.pdf, id=103, 844.15375pt x 597.23125pt>
-File: 15_users_enterprise.pdf Graphic file (type pdf)
-
-<use 15_users_enterprise.pdf>
-Package pdftex.def Info: 15_users_enterprise.pdf used on input line 353.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
-
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 353--354
- [] 
- []
-
-<16_users_ubuntu.pdf, id=104, 844.15375pt x 597.23125pt>
-File: 16_users_ubuntu.pdf Graphic file (type pdf)
-
-<use 16_users_ubuntu.pdf>
-Package pdftex.def Info: 16_users_ubuntu.pdf used on input line 365.
-(pdftex.def)             Requested size: 256.08183pt x 241.84999pt.
-
-Overfull \hbox (3.03197pt too wide) in paragraph at lines 365--366
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 295--296
  [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./11_messages_enterprise.pdf> <./12_words_enterprise.pdf> <./13_messages_u
-buntu.pdf>]
+ [6 <./03_delta_logical_enterprise.pdf> <./04_delta_entangled_enterprise.pdf> <
+./05_delta_kde_enterprise.pdf> <./06_delta_logical_ubuntu.pdf>]
+<11_messages_enterprise.pdf, id=72, 844.15375pt x 597.23125pt>
+File: 11_messages_enterprise.pdf Graphic file (type pdf)
+
+<use 11_messages_enterprise.pdf>
+Package pdftex.def Info: 11_messages_enterprise.pdf used on input line 308.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
+
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 308--309
+ [] 
+ []
+
+<12_words_enterprise.pdf, id=73, 844.15375pt x 597.23125pt>
+File: 12_words_enterprise.pdf Graphic file (type pdf)
+
+<use 12_words_enterprise.pdf>
+Package pdftex.def Info: 12_words_enterprise.pdf used on input line 316.
+(pdftex.def)             Requested size: 241.84863pt x 241.84999pt.
+
+<13_messages_ubuntu.pdf, id=74, 844.15375pt x 597.23125pt>
+File: 13_messages_ubuntu.pdf Graphic file (type pdf)
+
+<use 13_messages_ubuntu.pdf>
+Package pdftex.def Info: 13_messages_ubuntu.pdf used on input line 327.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
+
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 327--328
+ [] 
+ []
+
+<14_words_ubuntu.pdf, id=75, 844.15375pt x 597.23125pt>
+File: 14_words_ubuntu.pdf Graphic file (type pdf)
+
+<use 14_words_ubuntu.pdf>
+Package pdftex.def Info: 14_words_ubuntu.pdf used on input line 335.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
+
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 335--336
+ [] 
+ []
+
+
+Underfull \vbox (badness 5417) has occurred while \output is active []
+
+ [7 <./07_delta_entangled_ubuntu.pdf> <./08_delta_kde_ubuntu.pdf> <./09_interar
+rival_enterprise.pdf> <./10_interarrival_ubuntu.pdf>]
+<15_users_enterprise.pdf, id=104, 844.15375pt x 597.23125pt>
+File: 15_users_enterprise.pdf Graphic file (type pdf)
+
+<use 15_users_enterprise.pdf>
+Package pdftex.def Info: 15_users_enterprise.pdf used on input line 349.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
+
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 349--350
+ [] 
+ []
+
+[8 <./11_messages_enterprise.pdf> <./12_words_enterprise.pdf> <./13_messages_ub
+untu.pdf> <./14_words_ubuntu.pdf>]
+<16_users_ubuntu.pdf, id=132, 844.15375pt x 597.23125pt>
+File: 16_users_ubuntu.pdf Graphic file (type pdf)
+
+<use 16_users_ubuntu.pdf>
+Package pdftex.def Info: 16_users_ubuntu.pdf used on input line 360.
+(pdftex.def)             Requested size: 256.08183pt x 236.15436pt.
+
+Overfull \hbox (3.03197pt too wide) in paragraph at lines 360--361
+ [] 
+ []
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 377.
+               Default added (so using `tbp') on input line 370.
+
+./Different_Every_Time.tex:428: Missing $ inserted.
+<inserted text> 
+                $
+l.428 \par {$\chi$}^
+                    2  = 2.97
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./Different_Every_Time.tex:429: Missing $ inserted.
+<inserted text> 
+                $
+l.429 \par
+           degrees of freedom = 4
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
 ./Different_Every_Time.tex:435: Missing $ inserted.
 <inserted text> 
                 $
 l.435 \par {$\chi$}^
-                    2  = 2.97
+                    2  = 11.08
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -777,35 +782,15 @@ you left one out. Proceed, with fingers crossed.
 <inserted text> 
                 $
 l.436 \par
-           degrees of freedom = 4
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./Different_Every_Time.tex:442: Missing $ inserted.
-<inserted text> 
-                $
-l.442 \par {$\chi$}^
-                    2  = 11.08
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./Different_Every_Time.tex:443: Missing $ inserted.
-<inserted text> 
-                $
-l.443 \par
            degrees of freedom = 5
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-[9 <./14_words_ubuntu.pdf> <./15_users_enterprise.pdf> <./16_users_ubuntu.pdf>]
-
-Underfull \vbox (badness 6016) has occurred while \output is active []
-
- [10]
-./Different_Every_Time.tex:494: Misplaced alignment tab character &.
+[9 <./15_users_enterprise.pdf> <./16_users_ubuntu.pdf>] [10]
+./Different_Every_Time.tex:487: Misplaced alignment tab character &.
 <argument> ...ts per conversation (Untransformed &
                                                    Hurdle adjustment)
-l.494 ...tion (Untransformed & Hurdle adjustment)}
+l.487 ...tion (Untransformed & Hurdle adjustment)}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -814,18 +799,18 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-./Different_Every_Time.tex:496: Missing $ inserted.
+./Different_Every_Time.tex:489: Missing $ inserted.
 <inserted text> 
                 $
-l.496 \begin{left}
+l.489 \begin{left}
                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./Different_Every_Time.tex:497: Missing delimiter (. inserted).
+./Different_Every_Time.tex:490: Missing delimiter (. inserted).
 <to be read again> 
                    \def 
-l.497 \begin{tabular}
+l.490 \begin{tabular}
                      {p{1.5cm} | p{0.45cm} | p{0.45cm} | p{0.45cm} | p{0.45c...
 I was expecting to see something like `(' or `\{' or
 `\}' here. If you typed, e.g., `{' instead of `\{', you
@@ -835,142 +820,142 @@ Acceptable delimiters are characters whose \delcode is
 nonnegative, or you can use `\delimiter <delimiter code>'.
 
 
-Overfull \hbox (4.45837pt too wide) in paragraph at lines 497--497
+Overfull \hbox (4.45837pt too wide) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 Transformation| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--497
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 0
  []
 
 
-Overfull \hbox (2.75008pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.75008pt too wide) in paragraph at lines 490--490
 \OT1/ptm/b/n/7 users| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--497
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 1
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--497
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 2
  []
 
 
-Overfull \hbox (2.75008pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.75008pt too wide) in paragraph at lines 490--490
 \OT1/ptm/b/n/7 users| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--497
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 3
  []
 
 
-Overfull \hbox (2.75008pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.75008pt too wide) in paragraph at lines 490--490
 \OT1/ptm/b/n/7 users| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--497
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 4
  []
 
 
-Overfull \hbox (2.75008pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.75008pt too wide) in paragraph at lines 490--490
 \OT1/ptm/b/n/7 users| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--497
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 5
  []
 
 
-Overfull \hbox (2.75008pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.75008pt too wide) in paragraph at lines 490--490
 \OT1/ptm/b/n/7 users| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--497
+Underfull \hbox (badness 10000) in paragraph at lines 490--490
 []\OT1/ptm/b/n/7 6
  []
 
 
-Overfull \hbox (2.75008pt too wide) in paragraph at lines 497--497
+Overfull \hbox (2.75008pt too wide) in paragraph at lines 490--490
 \OT1/ptm/b/n/7 users| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--498
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
 []\OT1/ptm/b/n/7 7
  []
 
 
-Overfull \hbox (2.75008pt too wide) in paragraph at lines 497--498
+Overfull \hbox (2.75008pt too wide) in paragraph at lines 490--491
 \OT1/ptm/b/n/7 users| 
  []
 
 
-./Different_Every_Time.tex:502: LaTeX Error: Command \end{left} invalid in math
+./Different_Every_Time.tex:495: LaTeX Error: Command \end{left} invalid in math
  mode.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.502 \end{center}
+l.495 \end{center}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-./Different_Every_Time.tex:502: LaTeX Error: Something's wrong--perhaps a missi
+./Different_Every_Time.tex:495: LaTeX Error: Something's wrong--perhaps a missi
 ng \item.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.502 \end{center}
+l.495 \end{center}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-./Different_Every_Time.tex:502: LaTeX Error: Something's wrong--perhaps a missi
+./Different_Every_Time.tex:495: LaTeX Error: Something's wrong--perhaps a missi
 ng \item.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.502 \end{center}
+l.495 \end{center}
                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-./Different_Every_Time.tex:502: LaTeX Error: \begin{left} on input line 496 end
+./Different_Every_Time.tex:495: LaTeX Error: \begin{left} on input line 489 end
 ed by \end{center}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.502 \end{center}
+l.495 \end{center}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./Different_Every_Time.tex:502: Missing \right. inserted.
+./Different_Every_Time.tex:495: Missing \right. inserted.
 <inserted text> 
                 \right .
-l.502 \end{center}
+l.495 \end{center}
                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -978,10 +963,10 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-./Different_Every_Time.tex:502: Missing $ inserted.
+./Different_Every_Time.tex:495: Missing $ inserted.
 <inserted text> 
                 $
-l.502 \end{center}
+l.495 \end{center}
                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -990,7 +975,7 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (2.45845pt too wide) in paragraph at lines 496--503
+Overfull \hbox (2.45845pt too wide) in paragraph at lines 489--496
 []$[]$ 
  []
 
@@ -999,7 +984,7 @@ Underfull \hbox (badness 6016) in paragraph at lines 44--46
 []\OT1/ptm/m/n/8 ``Watson work-place,'' 2017. [On-line]. Avail-able:
  []
 
-[12])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1012,32 +997,33 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 - LAST -
-Extra skip:0.0pt
-Left:11.0pt/1.73193pt
-Right:11.0pt/1.73193pt
-Output:10.0pt
-[13] (./Different_Every_Time.aux)
+Extra skip:34.06403pt
+Left:610.49997pt/0.17598pt
+Right:574.87999pt/1.73193pt
+Output:603.93997pt
+[12] (./Different_Every_Time.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5133 strings out of 493089
- 75505 string characters out of 6134843
- 157323 words of memory out of 5000000
- 8518 multiletter control sequences out of 15000+600000
- 39343 words of font info for 73 fonts, out of 8000000 for 9000
+ 5136 strings out of 493089
+ 75512 string characters out of 6134843
+ 188242 words of memory out of 5000000
+ 8519 multiletter control sequences out of 15000+600000
+ 39751 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,12n,39p,908b,290s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,12n,39p,1154b,292s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
-w/times/utmri8a.pfb>
-Output written on Different_Every_Time.pdf (13 pages, 203919 bytes).
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
+/times/utmri8a.pfb>
+Output written on Different_Every_Time.pdf (12 pages, 213021 bytes).
 PDF statistics:
  189 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams

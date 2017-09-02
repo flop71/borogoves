@@ -29,45 +29,45 @@ Warning--entry type for "devopsslack" isn't style-file defined
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 43 entries,
+You've used 44 entries,
             4039 wiz_defined-function locations,
-            1042 strings with 12408 characters,
-and the built_in function-call counts, 24744 in all, are:
-= -- 2061
-> -- 383
-< -- 198
-+ -- 226
-- -- 54
-* -- 1059
-:= -- 3982
-add.period$ -- 86
-call.type$ -- 43
-change.case$ -- 40
+            1048 strings with 12729 characters,
+and the built_in function-call counts, 25578 in all, are:
+= -- 2127
+> -- 420
+< -- 201
++ -- 244
+- -- 63
+* -- 1102
+:= -- 4107
+add.period$ -- 88
+call.type$ -- 44
+change.case$ -- 41
 chr.to.int$ -- 444
-cite$ -- 43
-duplicate$ -- 1838
-empty$ -- 2097
-format.name$ -- 67
-if$ -- 5600
+cite$ -- 44
+duplicate$ -- 1904
+empty$ -- 2155
+format.name$ -- 77
+if$ -- 5792
 int.to.chr$ -- 0
-int.to.str$ -- 43
-missing$ -- 320
-newline$ -- 190
-num.names$ -- 35
-pop$ -- 802
+int.to.str$ -- 44
+missing$ -- 336
+newline$ -- 193
+num.names$ -- 36
+pop$ -- 839
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1964
+skip$ -- 2029
 stack$ -- 0
-substring$ -- 1070
-swap$ -- 1402
-text.length$ -- 50
+substring$ -- 1077
+swap$ -- 1456
+text.length$ -- 53
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 43
+type$ -- 44
 warning$ -- 0
-while$ -- 112
-width$ -- 45
-write$ -- 439
+while$ -- 114
+width$ -- 46
+write$ -- 450
 (There were 8 warnings)
