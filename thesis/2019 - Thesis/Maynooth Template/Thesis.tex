@@ -13,6 +13,12 @@
 \usepackage{longtable}
 \usepackage{hyperref}
 \usepackage{breakurl}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{eurosym}
+\usepackage{rotating}
 
 \newcommand{\toclesschapter}[1]{\chapter*{#1}\addtocounter{chapter}{1}}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
@@ -38,7 +44,7 @@
 \begin{center}
 \includegraphics[width=10cm]{images/logo.eps} \\
 \vspace*{10mm}
-{ \Large \scshape {\bfseries Endless Data: A handbook to make sense of test, outage and collaboration data for SMEs and micro teams}}\\
+{ \Large \scshape {\bfseries Endless Data}}\\
 \end{center}
 
 \begin{center}
@@ -87,6 +93,7 @@ Ollscoil na h\'{E}ireann, M\'{a} Nuad\\
 %--- MAIN MATTER
 \mainmatter
 \input{Chapter_Introduction}
+\input{Chapter_Literature_Review}
 \input{Chapter_Social_Testing}
 \input{Chapter_Outage_Modelling}
 \input{Chapter_Outage_Simulation}
@@ -96,6 +103,6 @@ Ollscoil na h\'{E}ireann, M\'{a} Nuad\\
 
 %%==========================================================================
 %--- BIBLIOGRAPHY
-\bibliographystyle{plain}
+\bibliographystyle{IEEEtran}
 \bibliography{references_final}{}
 \end{document}
