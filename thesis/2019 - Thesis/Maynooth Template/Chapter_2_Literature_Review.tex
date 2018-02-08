@@ -260,9 +260,9 @@ Tokenisation is a process of converting a sequence of characters (e.g. message d
 
 Stop words are words which are filtered out before or after processing of text discourse \cite{leskovec2014mining}. Stop words typically refer to the most common words in a language; there is no consensus or master list of agreed stop words. The website ``ranks.nl'' provides lists of stop words in forty languages \cite{ranknl}. Hans Luhn, one of the pioneers in the field of information retrieval, is credited with creating the concept of stop words \cite{luhn1960key}.
 
-Stemming is a method of collapsing inflected words to their base or root form \cite{lovins1968development}. For example, the words: fishing, fished and fisher, could be reduced to their root fish. The benefit of stemming can be seen as follows: If one is interested in term frequency, it may be easiest to merely count the occurrences of the word fish rather than it's non-stemmed counterparts.
+Stemming is a method of collapsing inflected words to their base or root form \cite{lovins1968development}. For example, the words: fishing, fished and fisher, could be reduced to their root fish. The benefit of stemming can be seen as follows: If one is interested in term frequency, it may be easiest to merely count the occurrences of the word fish rather than its non-stemmed counterparts.
 
-Lemmatisation is the process of grouping together the inflected words, for analysis as a single entity \cite{manning1995introduction}. On the surface this process may look like the opposite of stemming; however, the main difference is that stemming is unaware of the context of the words and thus, cannot differentiate between words that have other meanings depending on context. For example, the word ``worse''  has ``bad'' as its lemma. This link missed by stemming as a dictionary lookup is needed. Whereas, the word ``talk'' is the root of ``talking''. This reference is matched in both stemming and lemmatisation.
+Lemmatisation is the process of grouping together the inflected words, for analysis as a single entity \cite{manning1995introduction}. On the surface this process may look like the opposite of stemming; however, the main difference is that stemming is unaware of the context of the words and thus, cannot differentiate between words that have other meanings depending on context. For example, the word ``worse''  has ``bad'' as its lemma. This link is missed by stemming as a dictionary lookup is needed. Whereas, the word ``talk'' is the root of ``talking''. This reference is matched in both stemming and lemmatisation.
 
 \subsection{Corpus Linguistics}
 
@@ -278,7 +278,7 @@ Latent Dirichlet allocation (LDA) is a generative statistical model that allows 
 
 \subsection{Linear Regression}
 
-Linear regression is a statistical technique to model the relationship between two or more variables. Typically, one or more explanatory variables (or independent) expressed as X, are used to predict the a response (or dependent) variable expressed as y. Where one independent variable is used, the process is known as simple linear regression. Where more than one independent variable is used the process is known as multiple linear regression.
+Linear regression is a statistical technique to model the relationship between two or more variables. Typically, one or more explanatory (or independent) variables  expressed as X, are used to predict the a response (or dependent) variable expressed as y. Where one independent variable is used, the process is known as simple linear regression. Where more than one independent variable is used the process is known as multiple linear regression.
 
 At a high level, both sets of variables are plotted in the form of a scatter plot, and a least squares line is fitted between the points on the graph. This approach attempts to fit a straight line between the points plotted. If the two sets of variables have a linear relationship, a suitable linear functional can be obtained in the following form:
 
@@ -288,7 +288,7 @@ At a high level, both sets of variables are plotted in the form of a scatter plo
 
 \subsection{Studies Related to Topic Mining of Small Text Corpora}
 
-Jivani conducts a comparative study of eleven stemmer's, to compare their advantages and limitations \cite{jivani2011comparative}. The study found that there is a lot of similarity regarding performance between the various stemming algorithms. Additionally, a rule-based approach may provide the correct output for all cases, as the stems generated may not always be accurate words. For linguistic stemmer's their output is highly dependent on the lexicon used, and words outside of the lexicon are not stemmed correctly.
+Jivani conducts a comparative study of eleven stemmer's, to compare their advantages and limitations \cite{jivani2011comparative}. The study found that there is a lot of similarity regarding performance between the various stemming algorithms. Additionally, a rule-based approach may provide the correct output for all cases, as the stems generated may not always be accurate words. For linguistic stemmers their output is highly dependent on the lexicon used, and words outside of the lexicon are not stemmed correctly.
 
 Naveed et al. \cite{naveed2011searching} investigates the problem of document sparsity in topic mining in the realm of micro-blogs. Their study found that ignoring length normalisation improves retrieval results. By introducing an ``interestingness'' (level of re-tweets) quality measurement also improves retrieval performance. 
 
@@ -298,7 +298,7 @@ Yin et al. \cite{yin2014dirichlet} discuss the problem of topic modelling short 
 
 Sridhar \cite{sridhar2015unsupervised} presents an unsupervised topic model for short texts using a Gaussian mixture model. His model uses a vector space model that overcomes the issue of word sparsity. The author demonstrates the efficacy of this model compared to LDA using tweet message data.
 
-Topic Modeling of Short Texts: A Pseudo-Document View Zuo et al. \cite{zuo2016topic} propose a probabilistic model called Pseudo-document-based topic model (PTM) for short text topic modelling. PTM introduces the idea of a pseudo-document to implicitly aggregate short texts against data sparsity. By modelling these pseudo-documents rather than short texts, a higher degree of performance is achieved. An additional sparsity enhancement is proposed that removes undesirable correlations between pseudo-documents and latent topics.
+Topic Modeling of Short Texts: A Pseudo-Document View by Zuo et al. \cite{zuo2016topic} propose a probabilistic model called Pseudo-document-based topic model (PTM) for short text topic modelling. PTM introduces the idea of a pseudo-document to implicitly aggregate short texts against data sparsity. By modelling these pseudo-documents rather than short texts, a higher degree of performance is achieved. An additional sparsity enhancement is proposed that removes undesirable correlations between pseudo-documents and latent topics.
 
 Schofield and Mimmo \cite{schofield2016comparing} investigate the effects of stemmers on topic models. Their research concluded that stemming does not help in controlling the size of vocabulary for topic modelling algorithms like LDA, and may reduce the predictive likelihood. The authors suggest that post-stemming may exploit nuances specific to corpora and computationally more efficient due to the smaller list of words for input.
 
