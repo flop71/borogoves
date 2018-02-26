@@ -5,7 +5,10 @@
 \label{ch:TM}
 
 \begin{textsl}
-{\small Collaborative chat tools and large text corpora are ubiquitous in today's world of real-time communication. As micro teams and start-ups adopt such tools, there is a need to understand the meaning (even at a high level) of chat conversations within collaborative teams. In this study, we propose a technique to segment chat conversations to increase the number of words available (19\% on average) for text mining purposes. Using an open source dataset, we answer the question of whether having more words available for text mining can produce more useful information to the end user. Our technique can help micro-teams and start-ups with limited resources to efficiently model their conversations to afford a higher degree of readability and comprehension. }
+{\small Collaborative chat tools and large text corpora are ubiquitous in today's world of real-time communication. As micro teams and start-ups adopt such tools, there is a need to understand the meaning (even at a high level) of chat conversations within collaborative teams. In this study, we propose a technique to segment chat conversations to increase the number of words available (19\% on average) for text mining purposes. Using an open source dataset, we answer the question of whether having more words available for text mining can produce more useful information to the end user. Our technique can help micro-teams and start-ups with limited resources to efficiently model their conversations to afford a higher degree of readability and comprehension.
+
+% Hello & Goodbye Abstract
+One of the main challenges in discourse analysis is the process of segmenting text into meaningful topic segments. While this problem has been studied over the past thirty years, previous topic segmentation studies ignore crucial elements of a conversation: an opening and closing remark. Our motivation to revisit this problem space is the rise of instant message usage. We consider the problem of topic segmentation as a machine learning classification one. Using both enterprise and open source datasets, we address the question as to whether a machine learning algorithm can be trained to identify salutations and valedictions within multi-party real-time chat conversations. Our results show that both Na\"ive Bayes and Support Vector Machine (SVM) algorithms provide a reasonable degree of precision(mean F1 score: 0.58).}
 \end{textsl}
 
 \vspace*{1cm}
@@ -29,6 +32,19 @@ Topic modelling is a frequently used process to discover semantic structure with
 In this paper, we propose a framework that both micro teams and SMEs can use to deliver a significant level of topic modelling terms, from real-time chat discourse data, while utilising their limited resource cohort. The core idea of this framework is for topic mining practitioners to partition their conversations using a novel technique. Such a method can provide a higher number of words (19\% on average) for topic summarisation tooling. For small teams with a limited pool of test resources, leveraging such segmentation techniques can provide not only more words for text mining but an improved level of readability than using an entire message corpus alone.
 
 This paper contains research conducted on an open-source real-time chat corpus. Through the study of this dataset we investigate a) If by partitioning messages based on their inter-arrival time, can a more significant number of distinct words be returned for use by topic modelling software? b) Does a higher number of words provide a level of readability that is easier for humans to comprehend? c) Can we use the results of this work to predict an optimal topic cluster size? Using the results of this study for our framework, a topic mining solution can be developed to provide an enhanced level of understanding for small message corpora.
+
+% Hello and Goodbye introduction
+
+Real-time group chat applications are seen as a way to improve productivity within mobile teams \cite{mobilesix}. By using traditional conversational techniques, discussions can take place irrespective of location or time-zone.  Small to medium (SMEs) businesses cite multiple benefits of real-time chat rooms. Such advantages include, brainstorming, client conferencing, customer support and distance learning \cite{smallbizchat}. A recent survey by ReportLinker found that while email is a primary source of communication for communication, group messaging application use is on the rise \cite{replink}. 
+
+However, there are a number of drawbacks to group chat applications. Often cited are the problems with continuous partial attention (i.e. routinely checking a conversation) \cite{procon} or the lack conversation summarisation \cite{chatsweat}. It is the latter problem that can prove challenging for users, especially if they have been away from a group chat for a period of time. Businesses face challenges in this regard, as current group chat applications offer little or no chat summarisation functionality. 
+
+Text segmentation is a technique used to separate text into meaningful clusters. Such clusters may include sentences or topics. Previously, text segmentation research has focused on topic changes within written discourse. Such discourse comprises prose text \cite{likforman2007text}. However, in recent times attention has turned to conversational discourse such as real-time chat \cite{weisz2008segmentation}. In an age of big data, coupled with the fact that businesses are using collaboration applications more than before \cite{chatrise}, being able to segment chat conversations by topic may prove useful in the domain of information retrieval.
+
+In this paper, we propose a technique that text segmentation practitioners can use to annotate conversations with an opening (salutation) and closing (valediction) remark. The core idea of this study is to demonstrate that by manually annotating conversation boundaries, a trained machine learning classifier algorithm can identify conversation boundaries using salutations and valedictions as a conversation perimeter. For topic modelling practitioners, identification of conversation boundary markers may improve text mining outcomes or a per-conversation basis.
+
+This study contains research conducted on two real-time chat discourse datasets. Our first dataset is an enterprise dataset from a real-time collaboration application; our second dataset is an open source data set from an Internet chat relay (IRC) channel. We investigate a) the high frequency words and key collocations that are present in salutation \& valediction messages and b) whether two specific machine learning classification algorithms can identify salutations, valedictions and conversation body text within multi-party chat discourse. The results of our study can be used to further the body research in the field of text segmentation.
+
 
 \section{Case study 7 - Chat discourse segmentation}
 
@@ -270,6 +286,196 @@ We mentioned previously that Biterm topic clusters contain ten terms, and that d
 
 The main benefit such a linear model is as follows: Determining the optimal cluster size can be a time-consuming task, especially for large datasets. Even using a rule of thumb such as a `divide input distinct words by ten' as a starting point, multiple iterations of Biterm may be required. By using a linear model such as ours, the task of determining the optimal term cluster size may be expedited. 
 
+\section{Case study 8 - Conversation Boundary Identification}
+
+Text segmentation of social media/collaboration messaging can be a useful technique to improve the quality of text mining and summarisation tasks. By annotating conversation boundaries by their salutation and valedictions, we demonstrate how machine learning algorithms can be trained to identify such opening and closing remarks with a reasonable degree of precision.
+
+\begin {table}[]
+\caption {Summary of dataset metrics and boundaries} 
+\label{tab:chap7_study2_tab5}
+\begin{center}
+\begin{tabular}{| p{6.2cm} | p{2.2cm} | p{3.5cm} |} 
+\hline \textbf{Dataset} & \textbf{Enterprise} & \textbf{Ubuntudev-IRC}
+\\ \hline \bf{Total \# Messages} & \multicolumn{0}{|c|}{3261} & \multicolumn{0}{|c|}{4223}
+\\ \hline \bf{ Total dataset duration (hours)} & \multicolumn{0}{|c|}{4822} & \multicolumn{0}{|c|}{86}
+\\ \hline \bf{Multi-line conversations annotated} & \multicolumn{0}{|c|}{257} & \multicolumn{0}{|c|}{207}
+\\ \hline \bf{Salutations} & \multicolumn{0}{|c|}{257} & \multicolumn{0}{|c|}{207}
+\\ \hline \bf{Valedictions} & \multicolumn{0}{|c|}{257} & \multicolumn{0}{|c|}{207}
+\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The study presented in this paper examines four hundred and sixty-four manually annotated real-time chat conversations from two datasets. The details are summarised in Table~\ref{tab:chap7_study2_tab5}. 
+
+For each message, we noted whether it was a salutation (i.e. an opening remark, greeting etc.). Each subsequent message was read until a valediction (i.e. a closing remark, farewell or acknowledgement message) was found. With a conversation perimeter identified we assigned a numeric topic ID. A number of single-line topics were found as part of the annotation process. For this study, only multi-line topics (i.e. conversations with one distinct salutation and valediction) are considered as part of our analysis.   
+
+The first dataset analysed was from an enterprise instant message chat system which discussed cloud infrastructure problems. For our study, we reviewed approximately 3200 messages. As part of the review phase, we annotated 257 distinct conversations. The total time period analysed was approximately 4820 hours. 
+
+The second dataset\footnote{A copy of the annotated open-source dataset is available from the corresponding author upon request.}analysed was the open source Ubuntu dev IRC channel \cite{irclogs}. For our study, we reviewed approximately 4200 messages. As part of the review phase, we annotated 207 unique conversations. The total time period analysed was approximately 86 hours. 
+
+This study aims to answer the following questions. First, what types of words and collations are contained within salutation and valediction messages? Second, can a classifier algorithm be trained to identify salutary and valedictory text from real-time chat messages, thus identify a conversation boundary?
+
+\subsection{Lexicography}
+
+Lexicography is the study of vocabulary meaning and its use. In recent times, research has expanded to include a corpus based approach \cite{biber1998corpus}. The benefit of a corpus based approach is as follows:
+
+\begin{itemize}
+  \item What is the frequency of word usage?
+  \item What is the frequency of word usage across multiple senses?
+  \item Do words have a systematic association with other words?
+\end{itemize}
+
+The advantage of the corpus-linguistic method is that language researchers can analyse naturally occurring language text produced by a variety of authors to confirm or refute intuitions about specific language features using empirical data.
+
+We aggregated both the salutation and valediction messages from each dataset into a single corpus. We then used the corpus linguistic tool \#lancsbox \cite{lancsbox} to analyse our salutation and valediction words. Our first research question asked a) what are the high-frequency words used and b) what interesting collations are present in salutation \& valediction messages.
+
+\subsection{Chat boundary classification}
+
+\begin {table}[]
+\caption {Condensed IRC conversation with classification labels} 
+\label{tab:chap7_study2_tab6}
+\begin{center}
+\begin{tabular}{| p{3.2cm} | p{2.5cm} | p{3cm} | p{2cm} |} \hline \textbf{Date} & \textbf{User} & \textbf{Test} & \textbf{Label} 
+\\  \hline 01/10/04 06:20 & \textless m\_tthew$>$ & fabbione: ahoy & salutation
+\\  \hline 01/10/04 06:27 & \textless fabbione$>$ & hey m\_tthew & undefined
+\\ \hline 01/10/04 07:04 & \textless mdz$>$ & morning & undefined
+\\  \hline 01/10/04 07:11 & \textless fabbione$>$ & mdz: for the ati / flrdkjdjds driver... & undefined
+\\  \hline 01/10/04 07:18 & \textless fabbione$>$ & building now :-) & undefined 
+\\  \hline 01/10/04 07:18 & \textless fabbione$>$ & brb & valediction 
+\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Our second research question asked, can a machine learning classifier algorithm be trained to identify text as a salutary and valedictory text from real-time chat messages with a reasonable degree of precision. For this research question, we constructed a multinomial classification experiment using three classes; salutation (opening message), undefined (neither an opening or closing message) and valediction (closing message). Table~\ref{tab:chap7_study2_tab6} provides an overview of the classification methodology.
+
+There is an open question as to whether stop words (i.e. the most common words in a language) should be removed before classification. If stopwords are removed, it can remove ``noise" from sentences and allow a classifier to focus on a subset of text. However, the concern is that valuable text markers may be lost if such text is removed. We conduct our classification experiment on both the full text and with stop words removed.
+
+Next, we conducted the following steps to train each algorithm and evaluate each training set using the python library scikit-learn\footnote{http://scikit-learn.org/stable/}.
+
+\begin{itemize}
+  \item Each dataset was divided into a training, development and test set, in a ratio of 60\% / 20\% / 20\%.
+  \item Each training set was trained against both classifier algorithms.
+  \item A development set was used to assess the performance of each algorithm.
+  \item A test set was used to assess the performance of each algorithm to assess over/under-fitting.
+  \item The above steps were repeated with the stop words removed from both datasets.
+\end{itemize}
+
+Note: For the SVM algorithm we assessed a total of thirty-six combinations of loss and penalty functions using the development set. The highest performing combination was then used to validate the training set, using the same parameters. The NB algorithm has no loss or penalty tuning parameters.
+
+\subsection{Limitations of dataset}
+
+The dataset has some practical limitations, which are now discussed. The process of aggregating chat messages into a cohesive conversation is a subjective one. Every effort was made to assign messages to their most appropriate thread. We recognise that the process is subjective, and may be subject to type I errors. 
+
+The chat conversations that form part of this study are from an Ubuntu IRC developer channel and an Enterprise Cloud channel. While we hope these examples will be representative of technical discussion channels, it seems unlikely they will be typical of all types of channels.
+
+
+
+\subsection{Results - Lexicography}
+
+\begin {table}[]
+\caption {List of the most frequent non stop words} 
+\label{tab:chap7_study2_tab7}
+\begin{center}
+\begin{tabular}{| p{1cm} | p{2cm} | p{2cm} | p{1cm} | p{2cm} | p{2cm} |} 
+\hline \textbf{\#} & \textbf{Word} & \textbf{Frequency} & \textbf{\#} & \textbf{Word} & \textbf{Frequency}
+\\  \hline 17 & thanks &\multicolumn{0}{|c|}{68} & 35 & jenkins &\multicolumn{0}{|c|}{36}
+\\  \hline 20 & can & \multicolumn{0}{|c|}{64} & 36 & ok &\multicolumn{0}{|c|}{36}
+\\ \hline 21 & now & \multicolumn{0}{|c|}{51} & 37 & update &\multicolumn{0}{|c|}{35}
+\\  \hline 24 & will & \multicolumn{0}{|c|}{49} & 40 & get &\multicolumn{0}{|c|}{35}
+\\  \hline 27 & today & \multicolumn{0}{|c|}{42} & 42 & please &\multicolumn{0}{|c|}{33}
+\\  \hline 29 & not & \multicolumn{0}{|c|}{40} & 43 & need &\multicolumn{0}{|c|}{33}
+\\  \hline 30 & as & \multicolumn{0}{|c|}{40} & 44 & morning &\multicolumn{0}{|c|}{33}
+\\  \hline 31 & new & \multicolumn{0}{|c|}{38} & 45 & working &\multicolumn{0}{|c|}{31}
+\\  \hline 34 & just & \multicolumn{0}{|c|}{36} & 48 & still &\multicolumn{0}{|c|}{29}
+\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+We tabulated a list of the fifty most common words found in both salutation and valediction text. Thirty-two of these words were found to be either stop words or usernames. We removed these words from our list. Table~\ref{tab:chap7_study2_tab7} provides a summary of the most common words used across the salutation and valediction corpus. We include the absolute rank of the word frequency in the overall corpus. 
+
+\begin{figure}[]
+\begin{center}
+\includegraphics[height=7cm, width=9cm]{graphs/hellogoodbye/morning.pdf} 
+\caption{Collation plot for the word `morning'}
+\end{center}
+\label{fig:chapt7_study2_fig1}
+\end{figure}
+
+\begin{figure}[]
+\begin{center}
+\includegraphics[height=7cm, width=9cm, angle =270]{graphs/hellogoodbye/thanks.pdf} 
+\caption{Collation plot for the word `thanks'}
+\end{center}
+\label{fig:chapt7_study2_fig2}
+\end{figure}
+
+We choose two words: \textit{morning} and \textit{thanks} from Table~\ref{tab:chap7_study2_tab7} to explore collations in more detail. We selected \textit{thanks} as we observed that it was used quite frequently in a number of closing messages to acknowledge completion of some task. We selected \textit{morning} as it appeared in a number of salutations as a form of greeting. Fig.1 \& Fig. 2 illustrate a collocation graph for each word. A collocation graph is used to show how a given word is used in conjunction with other words, and whether that word appears to the left or right of a collocated word.
+
+\subsection{Results - Chat boundary classification}
+
+\begin {table*}[]
+\caption {Summary of Text Classification Experiments} 
+\label{tab:chapt7_study2_tab8}
+\begin{center}
+\begin{tabular}{| p{1.7cm} | p{2.2cm} | p{1.8cm} | p{1.8cm} | p{1.7cm} | p{1.3cm} | p{0.8cm} |}
+ \hline \textbf{Dataset} & \textbf{Processing} & \textbf{Classifier} & \textbf{Label} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} 
+\\ \hline Ubuntu IRC & None & NB & salutation & \multicolumn{0}{|r|}{0.52} & \multicolumn{0}{|r|}{0.55} & \multicolumn{0}{|r|}{0.54} 
+\\ \hline  &  &  & undefined & \multicolumn{0}{|r|}{0.57} & \multicolumn{0}{|r|}{0.8} & \multicolumn{0}{|r|}{0.67} 
+\\ \hline  &  &  & valediction & \multicolumn{0}{|r|}{0.55} & \multicolumn{0}{|r|}{0.3} & \multicolumn{0}{|r|}{0.39} 
+\\ \hline  &  &  & \bf{mean} & \multicolumn{0}{|r|}{\bf{0.55}} & \multicolumn{0}{|r|}{\bf{0.55}} & \multicolumn{0}{|r|}{\bf{0.53}}
+
+\\ \hline Ubuntu IRC & Tokenised \& & SVM & salutation  & \multicolumn{0}{|r|}{0.62} & \multicolumn{0}{|r|}{0.45} & \multicolumn{0}{|r|}{0.52} 
+\\ \hline  &  Stopwords removed &  & undefined & \multicolumn{0}{|r|}{0.54} & \multicolumn{0}{|r|}{0.7} & \multicolumn{0}{|r|}{0.61} 
+\\ \hline  &  &  & valediction & \multicolumn{0}{|r|}{0.62} & \multicolumn{0}{|r|}{0.6} & \multicolumn{0}{|r|}{0.61}   
+\\ \hline  &  &  & \bf{mean} & \multicolumn{0}{|r|}{\bf{0.59}} & \multicolumn{0}{|r|}{\bf{0.58}} & \multicolumn{0}{|r|}{\bf{0.58}}  
+
+\\ \hline Enterprise & None & SVM & salutation & \multicolumn{0}{|r|}{0.55} & \multicolumn{0}{|r|}{0.62} & \multicolumn{0}{|r|}{0.58}
+\\ \hline  &  &  & undefined & \multicolumn{0}{|r|}{0.57} & \multicolumn{0}{|r|}{0.58} & \multicolumn{0}{|r|}{0.57}  
+\\ \hline  &  &  & valediction & \multicolumn{0}{|r|}{0.56} & \multicolumn{0}{|r|}{0.48} & \multicolumn{0}{|r|}{0.52}  
+\\ \hline  &  &  &\bf{mean} & \multicolumn{0}{|r|}{\bf{0.56}} & \multicolumn{0}{|r|}{\bf{0.56}} & \multicolumn{0}{|r|}{\bf{0.56}}  
+
+\\ \hline Enterprise & Tokenised \& & SVM & salutation  & \multicolumn{0}{|r|}{0.68} & \multicolumn{0}{|r|}{0.64} & \multicolumn{0}{|r|}{0.66} 
+\\ \hline  &  Stopwords removed &  & undefined & \multicolumn{0}{|r|}{0.49} & \multicolumn{0}{|r|}{0.58} & \multicolumn{0}{|r|}{0.53} 
+\\ \hline  &  &  & valediction & \multicolumn{0}{|r|}{0.57} & \multicolumn{0}{|r|}{0.5} & \multicolumn{0}{|r|}{0.53} 
+\\ \hline  &  &  & \bf{mean} & \multicolumn{0}{|r|}{\bf{0.58}} & \multicolumn{0}{|r|}{\bf{0.57}} & \multicolumn{0}{|r|}{\bf{0.57}}
+
+\\ \hline Combined & None & SVM & salutation & \multicolumn{0}{|r|}{0.59} & \multicolumn{0}{|r|}{0.52} & \multicolumn{0}{|r|}{0.55} 
+\\ \hline  &  &  & undefined & \multicolumn{0}{|r|}{0.54} & \multicolumn{0}{|r|}{0.58} & \multicolumn{0}{|r|}{0.56}  
+\\ \hline  &  &  & valediction & \multicolumn{0}{|r|}{0.52} & \multicolumn{0}{|r|}{0.53} & \multicolumn{0}{|r|}{0.52}  
+\\ \hline  &  &  & \bf{mean} & \multicolumn{0}{|r|}{\bf{0.55}} & \multicolumn{0}{|r|}{\bf{0.54}} & \multicolumn{0}{|r|}{\bf{0.54}} 
+
+\\ \hline Combined & Tokenised \& & SVM & salutation  & \multicolumn{0}{|r|}{0.57} & \multicolumn{0}{|r|}{0.57} & \multicolumn{0}{|r|}{0.57} 
+\\ \hline  &  Stopwords removed &  & undefined & \multicolumn{0}{|r|}{0.50} & \multicolumn{0}{|r|}{0.41} & \multicolumn{0}{|r|}{0.45}  
+\\ \hline  &  &  & valediction & \multicolumn{0}{|r|}{0.49} & \multicolumn{0}{|r|}{0.58} & \multicolumn{0}{|r|}{0.53} 
+\\ \hline  &  &  & \bf{mean} & \multicolumn{0}{|r|}{\bf{0.52}} & \multicolumn{0}{|r|}{\bf{0.52}} & \multicolumn{0}{|r|}{\bf{0.52}} 
+\\ \hline
+\end{tabular}
+\end{center}
+\end{table*}
+
+Table~\ref{tab:chapt7_study2_tab8} provides a summary of the classification results. We note that highest mean precision, recall and F1 score was achieved with the Ubuntu IRC dataset with stop words removed. The lowest mean precision, recall and F1 score were against the combined Enterprise \& Ubuntu IRC dataset with stop words removed. For SVM the Huber loss function with no penalty provided the highest mean scores. 
+
+\subsection{Discussion Lexicography}
+
+Our first research question asked a) what are the high-frequency words used and b) what interesting collocations are present in salutation \& valediction messages. We note that thirty-two of the top fifty words were `stop words', as these words are the most commonly used words in the English language this is unsurprising. Table~\ref{tab:chap7_study2_tab7} illustrates that \textit{thanks, can} and \textit{now} appear fifty times or more. We note that: \textit{Thanks} (a noun or interjection used to express gratitude), \textit{Can} (is an auxiliary verb used with a pronoun (e.g. you)) and \textit{Now} (an adverb used to add a time dimension to an action or statement). Interestingly, neither a variation on the standard greeting or farewell (e.g. hello, goodbye) appeared in the top one hundred words. \textit{Hi} was the 120th most frequent word while \textit{later} was the 292nd most frequent word.
+
+Looking at the collocation graph in Fig. 1 we see \textit{morning} collocates with nine words. The most frequent collocates were \textit{this} (left) and  \textit{for} (right). Interestingly, morning does not collocate with \textit{good}, however it does collocate with a username \textit{mdz} on six occasions. Fig. 2 shows the collocation graph for \textit{thanks}. We can see that \textit{thanks} collocates with twenty-nine distinct words. On twenty-four occasions, \textit{thanks} has no collocates (i.e. used as a single word message), also on thirty-four occasions, \textit{thanks} collocates with four distinct usernames (i.e. \textit{bbh, matt, des, aweir}).
+
+The key takeaway from this work is to demonstrate how complex and variable written discourse is. By adopting a corpus based approach, we can understand how language is used within a specific domain. The results of corpus analysis can be used define features for use as part of a deep learning architecture.
+
+\subsection{Discussion Chat boundary classification}
+
+Our second research question asked, can a machine learning classifier algorithm be trained to identify text as a salutation or valediction from real-time chat messages and if so to what degree of precision. Looking at Table~\ref{tab:chapt7_study2_tab8}, a number of points are apparent. Overall SVM performed best in five of the six experiments, the highest mean precision, recall and F1 score achieved was with the Ubuntu dataset with stop words removed. The Huber loss function with no penalty provided the highest level precision across all experiments. 
+
+Combining the two datasets did not yield a significant improvement classifier performance. By combining the datasets, we added more variance to our training and test data, which degraded classifier performance. Interestingly, when stopped words were removed from each dataset, we observed a slight increase in classifier performance except with the combined dataset. Our intuition suggests that by removing stop words, we removed some of the variance from both datasets. 
+
+Overall, the both classifier algorithms achieved average or slightly better than average performance. We see two contributing factors. Firstly, we know there is variability in the language used within salutation and valediction text. We observed that a number of conversations start with an image, URL or emoji rather than an English word. Secondly, for the undefined label, there is even more variability due to the many ways in which humans can express themselves in chat discourse.
+
+The main benefit of such an experiment is to highlight the idea, that neither the NB nor SVM text classifier algorithms are suited to identify specific types of utterances in chat discourse with a high degree of precision. However, we acknowledge that increasing the level of training and test data would be reasonable for further experiments in this area.
+
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -284,6 +490,19 @@ We also found that the terms output from topic modelling bursts and reflection p
 Finally, the relationship between optimal output words and the optimal \# clusters had a strong regression effect. In other words, we can use the optimal terms to predict the required number of topic clusters. This result can have a positive benefit for topic modelling practitioners, as it may reduce the iterative approach needed to find the number of topic clusters that produce the largest distinct number of words.
 
 Both SMEs and micro-teams can use the above result to deliver high-value topic mining outputs from their group chat discourse. Teams can focus initially on a corpus-based approach for a particular channel/space. The advantage of a more extensive corpus approach is that topic modelled outputs can be assessed in context. Where words collations exist, this knowledge can be directly applied to place a higher value on terms generated from topic mining tools.
+
+% Hello & Goodbye conclusion
+
+The purpose of this study was to understand whether a text classification algorithm could be used to identify conversation boundaries using salutation and valediction text within a group chat context. Additionally, we adopted a corpus linguistic approach to identify lexical patterns within group chat conversations.  
+
+We found that both NB and SVM provide a modest level of precision identifying opening and closing remarks within a group chat conversations. Additionally, we found that classifier performance varied little between datasets and that removal of stop words increased classifier performance on each data set. Combining datasets saw a slight decrease in classifier performance.
+
+Furthermore, we found that a corpus-based approach can provide useful insights into the mechanics of opening and closing messages of a group chat conversation with the use of collocations. 
+
+These initial results may be of use to SMEs and researchers in understanding issues in the use of NB and SVM for identification of salutations and valedictions. By adopting a finer grained corpus-based approach, additional features may be developed that can be used to provide models with improved performance. We consider that a multi-feature classification model in the form of a neural network could be used to further our work.
+
+In subsequent work, we shall investigate the idea of whether multiple messages form a salutation and validation cluster. Additionally, we shall evaluate our datasets with two other classification algorithms: Decision trees and the ensemble method random forest using increased training and test data.
+
 
 % ---------------------------------------------------------------------------
 % ----------------------- end of thesis sub-document ------------------------
