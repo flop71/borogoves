@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Solar System</title>
+<style type="text/css">
+
+*{
+  margin:0;
+  padding:0p;
+  font-family:"Helvetica";
+}
+
+body{
+  background:black;   
+    user-select: none;
+ 
+}
+
+ul{
+  list-style:none;
+}
+
+li{
+  display:inline-block;
+}
+
+.body{
+  margin:0 auto;
+  width:1200px;
+  padding-top:40px;     
+}
+
+
+</style>
+
+<body data-rsssl=1>
+	
+<canvas id="canvas" height="800" width="1200"></canvas>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+
+<script type="text/javascript">
+window.onload = function(){
+    if(navigator.appVersion.indexOf("MSIE 7.") != -1 || navigator.appVersion.indexOf("MSIE 8.") != -1){
+        alert("Please don't use old IE browser");
+    }
+    
+  var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d"),
+    cw  = canvas.width,
+    ch  = canvas.height,
+    time = 1;
+    
+    /*set support for requestAnimationFrame - ovrride method */
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function(callback){window.setTimeout(callback, 1000/60);}
+
+    
+  function circle(radius,color,x,y,shadow,i){
+    /*set default*/
+    x = typeof x !== "undefined" ? x : cw/2;
+    y = typeof y !== "undefined" ? y : ch/2;
+    
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x,y,radius,0,2*Math.PI,true);   //true = clockwise, false = counterclock
+    ctx.fill();
+    ctx.closePath();
+  }
+  
+  function circleStroke(radius,strokeColor,x,y,lineWidth){
+    ctx.beginPath();
+    ctx.arc(x,y,radius,0,2*Math.PI,true);
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = strokeColor;
+    ctx.stroke();
+    ctx.closePath();
+  }
+ 
+ //this is not used
+  // function line(ax,ay,bx,by){
+  //   ctx.beginPath();
+  //   ctx.moveTo(ax*2,ay);
+  //   ctx.lineTo(bx,by);
+  //   ctx.strokeStyle = "rgba(255, 255, 255,0.12)";
+  //   ctx.stroke();
+  //   ctx.closePath();
+  // }
+  
+  function text(text,color,font,x,y){
+    ctx.beginPath();
+    ctx.font = font;
+    ctx.fillStyle = color;
+    ctx.fillText(text,x,y);
+    ctx.closePath();
+    //console.log(text);
+  }
+    
+  function animate(){
+    
+    ctx.save();
+    ctx.beginPath();
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0,0,cw,ch);
+    ctx.closePath();
+    
+    // Title Text
+    text("Hell Drivers (1957) Centre of the Acting Universe?", "#898989","16pt arial",350,30);
+        
+    //Hell Drivers - center
+    ctx.translate(cw/2,ch/2);
+     circle(40,"grey",0,0);
+    
+    // x = typeof x !== "undefined" ? x : cw/2;
+    // y = typeof y !== "undefined" ? y : ch/2;
+  
+    // ctx.beginPath();
+    // ctx.fillStyle = "rgba(255,245,61,1)"
+    // ctx.shadowBlur = 20;
+    // // ctx.shadowColor = "rgba(255,245,61,1)";
+    // ctx.arc(0,0,35,0,2*Math.PI,true);   //true = clockwise, false = counterclock
+    // ctx.fill();
+    // ctx.closePath();
+    
+    
+
+    
+    
+    
+    text("Hell", "black","8pt arial", -11,-5);
+    text("Drivers", "black", "8pt arial", -18,5);
+    text("(1957)", "black","8pt arial", -16,15);
+    
+   
+    //Graph Text
+    text("1958", "white","8pt arial", -11,120);
+    text("1960", "white","8pt arial", -11,170);
+    text("1963", "white","8pt arial", -11,220);
+    text("1964", "white","8pt arial", -11,270);
+    text("1965", "white","8pt arial", -11,320);
+    text("1966", "white","8pt arial", -11,370);
+    
+    
+     //Legend Text
+	text("Legend", "#a7a7a7","12pt arial", 392,-370);
+    text("1958",  "#a7a7a7","8pt arial", 400,-350);
+    circle(5,"#a7a7a7",400,-334);
+    text("Peggy Cummins - Night of the Demon",  "#a7a7a7","8pt arial", 410,-330);
+     
+     
+    text("1960",  "#a7a7a7","8pt arial", 400,-308);
+    text("Herbert Lom - Sparticus",  "#addcff","8pt arial", 410,-288);
+    circle(5,"#addcff",400,-292);
+    text("Patrick McGoohan - Danger Man",  "#4682b4","8pt arial", 410,-276);
+    circle(5,"#4682b4",400,-280);
+    text("George Murcell - Danger Man",  "#4682b4","8pt arial", 410,-264);
+    circle(5,"#4682b4",400,-268);
+    text("Sidney James 	Citizen James",  "#254661","8pt arial", 410,-252);
+    circle(5,"#254661",400,-256);
+    
+    
+    text("1963",  "#a7a7a7","8pt arial", 400,-222);
+    text("William Hartnell 	Doctor Who",  "#a1731d","8pt arial", 410,-202);
+    circle(5,"#a1731d",400,-206);
+    text("Gordon Jackson - The Great Escape",  "#c58e26","8pt arial", 410,-190);
+    circle(5,"#c58e26",400,-194);
+    text("David McCallum - The Great Escape",  "#c58e26","8pt arial", 410,-178);
+    circle(5,"#c58e26",400,-182);
+    text("Sean Connery - Dr. No",  "#f4b846","8pt arial", 410,-166);
+    circle(5,"#f4b846",400,-170);
+    text("Wensley Pithey - The Saint",  "#f7c974","8pt arial", 410,-154);
+    circle(5,"#f7c974",400,-158); 
+    
+    
+    text("1964",  "#a7a7a7","8pt arial", 400,-136);
+    text("Stanley Baker - Zulu",  "#d3d41d","8pt arial", 410,-116);
+    circle(5,"#d3d41d",400,-120);
+    text("Wilfrid Lawson - Becket", "#a2a335","8pt arial", 410,-104);
+    circle(5,"#a2a335",400,-108);
+    text("Jill Ireland - The Man from UNCLE",  "#87874c","8pt arial", 410,-92);
+    circle(5,"#87874c",400,-96);   
+    
+    
+    text("1965",  "#a7a7a7","8pt arial", 400,-66);
+    text("Alfie Bass - Help!",  "#7c4c03","8pt arial", 410,-46);
+    circle(5,"#7c4c03",400,-50);
+  //  text("Wensley Pithey - The Saint", "#907c5d","8pt arial", 410,-34);
+  //  circle(5,"#907c5d",400,-38);
+    
+    
+    text("1966",  "#a7a7a7","8pt arial", 400,-8);
+    text("Marjorie Rhodes -The Family Way", "#70947a","8pt arial", 410,12);
+    circle(5,"#70947a",400,8);
+    
+    
+    
+    // //1958 Line
+    circleStroke(100,"#1c1c1c",0,0,"1");
+    
+    // //Peggy Cummins - Night of the Demon
+    ctx.rotate(time / 120);  /*.restore and .save doesn't work on rotate()*/
+    // ctx.translate(100,0);
+    var radius = time/5 >= 100 ? radius = 100 : time/5
+    // ctx.translate(radius,0);
+    // circleStroke(radius,"blue",0,0,"0.5");
+    var opacity0 = (radius >=100) ? opacity = 1 : opacity = 0.9
+    circle(7.5,"rgba(167, 167, 167, 1)"+ opacity0+ ")",radius,0);
+
+    // var opacity1 = (radius >=100) ? opacity = (600-time)/200 : opacity = 0.5
+    //circle(7.5*.8,"#a7a7a7"+ opacity1+ ")",radius,-6);
+    
+    //var opacity2 = (radius >=100) ? opacity = (700-time)/600 : opacity = 0.3
+    //circle(7.5*.65,"#a7a7a7"+ opacity2+ ")",radius-3,-10);
+
+  
+    
+    
+    
+    
+    //1960 line        
+    // ctx.translate(radius*-1,0);   //reset translate
+    circleStroke(150,"#1c1c1c",0,0,"1");  
+    
+    //Herbert Lom - Sparticus
+    ctx.rotate(time / 1040);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 150 ? radius = 150 : time/5
+   
+    var opacity0 = (radius >=150) ? opacity = 1 : opacity = 0.9
+    circle(7.9,"rgba(82,172,222,"+ opacity0+ ")",radius,0);
+
+    //var opacity1 = (radius >=150) ? opacity = (850-time)/200 : opacity = 0.5
+    //circle(7.9*.8,"rgba(82,172,222,"+ opacity1+ ")",radius,-6);
+    
+    //var opacity2 = (radius >=150) ? opacity = (930-time)/600 : opacity = 0.3
+    //circle(7.9*.65,"rgba(82,172,222,"+ opacity2+ ")",radius-3,-10);
+
+    
+    //Patrick McGoohan & George Murcell	Danger Man
+    ctx.rotate(time / 2240);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 150  ? radius = 150 : time/5 
+    circle(7.8,"#4682b4",radius,0); 
+    
+     
+    //Sidney James 	Citizen James
+    ctx.rotate(time / 4640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 150  ? radius = 150 : time/5 
+    circle(7.2,"#254661",radius,0);
+
+    
+    // //1963 line        
+    circleStroke(200,"#1c1c1c",0,0,"1");  
+    
+    
+    // //William Hartnell 	Doctor Who
+    ctx.rotate(time / 5640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 200  ? radius = 200 : time/5 
+    circle(8.3,"RGBA(161, 115, 29, 1)",radius,0);
+    
+    
+    // //Gordon Jackson / David McCallum	The Great Escape 
+    ctx.rotate(time / 2640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 200  ? radius = 200 : time/5 
+    circle(8.2,"#c58e26",radius,0);
+
+    
+    // //Sean Connery 	Dr. No
+    ctx.rotate(time /1640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 200  ? radius = 200 : time/5 
+    
+    var opacity0 = (radius >=200) ? opacity = 1 : opacity = 0.9
+    circle(7.8,"RGBA(244, 184, 70, 1)"+ opacity0+ ")",radius,0);
+
+    //var opacity1 = (radius >=200) ? opacity = (1100-time)/200 : opacity = 0.5
+    //circle(7.8*.8,"RGBA(244, 184, 70, 1)"+ opacity1+ ")",radius,-6);
+    
+    //var opacity2 = (radius >=200) ? opacity = (1180-time)/600 : opacity = 0.3
+    //circle(7.8*.65,"RGBA(244, 184, 70, 1)"+ opacity2+ ")",radius-3,-10);
+  
+    
+    
+    // //1964 line        
+    // ctx.translate(radius*-1,0);   //reset translate
+    circleStroke(250,"#1c1c1c",0,0,"1");  
+    
+    
+    // //Stanley Baker 	Zulu
+    ctx.rotate(time / 3640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 250 ? radius = 250 : time/5 
+    circle(7.7,"#d3d41d",radius,0);
+    
+    // //Wilfrid Lawson 	Becket
+    ctx.rotate(time / 2640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 250 ? radius = 250 : time/5 
+    circle(7.8,"#a2a335",radius,0);
+    
+    
+    // //Jill Ireland 	The Man from UNCLE
+    ctx.rotate(time / 1640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 250 ? radius = 250 : time/5 
+    var opacity0 = (radius >=250) ? opacity = 1 : opacity = 0.9
+    
+    circle(7.8,"RGBA(135, 135, 76, 1)"+ opacity0+ ")",radius,0);
+
+    //var opacity1 = (radius >=250) ? opacity = (1350-time)/200 : opacity = 0.5
+    //circle(7.8*.8,"RGBA(135, 135, 76, 1)"+ opacity1+ ")",radius,-6);
+    
+    //var opacity2 = (radius >=250) ? opacity = (1430-time)/600 : opacity = 0.3
+    //circle(7.8*.65,"RGBA(135, 135, 76, 1)"+ opacity2+ ")",radius-3,-10);
+       
+    
+    // //1965 line        
+    // ctx.translate(radius*-1,0);   //reset translate
+    circleStroke(300,"#1c1c1c",0,0,"1");    
+    
+    // //Alfie Bass 	Help!
+    ctx.rotate(time / 3640);  /*.restore and .save doesn't work on rotate()*/   
+    //  ctx.translate(300,0);
+    var radius = time/5 >= 300 ? radius = 300 : time/5 
+    // ctx.translate(radius,0);
+    circle(7.2,"#7c4c03",radius,0);
+    
+    
+    // //Wensley Pithey 	The Saint
+    ctx.rotate(time / 2640);  /*.restore and .save doesn't work on rotate()*/    
+    var radius = time/5 >= 300 ? radius = 300 : time/5 
+    var opacity0 = (radius >=300) ? opacity = 1 : opacity = 0.9
+    
+    circle(8,"RGBA(144, 124, 93, 1)"+ opacity0+ ")",radius,0);
+
+    //var opacity1 = (radius >=300) ? opacity = (1600-time)/200 : opacity = 0.5
+    //circle(8*.8,"RGBA(144, 124, 93, 1)"+ opacity1+ ")",radius,-8);
+    
+    //var opacity2 = (radius >=300) ? opacity = (1680-time)/600 : opacity = 0.3
+    //circle(8*.65,"RGBA(144, 124, 93, 1)"+ opacity2+ ")",radius-3,-12);
+    
+    
+    
+    // //1966 line        
+    // ctx.translate(radius*-1,0);   //reset translate
+    circleStroke(350,"#1c1c1c",0,0,"1");    
+    
+    
+    // //Marjorie Rhodes 	The Family Way
+    ctx.rotate(time / 3640);  /*.restore and .save doesn't work on rotate()*/    
+    
+    // ctx.translate(350,0);
+    var radius = time/10 >= 350 ? radius = 350 : time/10 
+    // ctx.translate(0,0);
+    // circleStroke(radius,"red",0,0,"0.5"); 
+
+    // posx=0 posy=0
+    // var posx = -1+(time/10000) >= 0 ? posx = 0 : -1+(time/10000)
+    // console.log (posx)
+    // circle(8,"rgba(200,20,6,0.6)",radius,0);
+    var opacity0 = (radius >=350) ? opacity = 1 : opacity = 0.9
+    circle(8,"RGBA(112, 148, 122, 1)"+ opacity0+ ")",radius,0);
+
+    //var opacity1 = (radius >=350) ? opacity = (1850-time)/200 : opacity = 0.5
+    //circle(8*.8,"RGBA(112, 148, 122, 1)"+ opacity1+ ")",radius,-8);
+    
+    //var opacity2 = (radius >=350) ? opacity = (1930-time)/600 : opacity = 0.3
+    //circle(8*.65,"RGBA(112, 148, 122, 1)"+ opacity2+ ")",radius-3,-12);
+ 
+    
+    // ---------------------------------------
+    
+    
+    ctx.restore();
+    time++;
+  //  console.log(time);
+    window.requestAnimationFrame(animate);
+  }
+  
+    window.requestAnimationFrame(animate);
+}
+
+
+
+
+  </script>
+	
+</body>      
